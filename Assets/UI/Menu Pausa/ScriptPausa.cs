@@ -9,7 +9,7 @@ public class ScriptPausa : MonoBehaviour
 
     void Start()
     {
-        // Asegurarse de que el menú está desactivado al inicio
+       
         ObjetoMenuPausa.SetActive(false);
         Time.timeScale = 1f;
     }
@@ -32,14 +32,14 @@ public class ScriptPausa : MonoBehaviour
     public void ActivarPausa()
     {
         ObjetoMenuPausa.SetActive(true);
-        Time.timeScale = 0f;  // Congela el tiempo del juego
+        Time.timeScale = 0f;  
         Pausa = true;
     }
 
     public void Reanudar()
     {
         ObjetoMenuPausa.SetActive(false);
-        Time.timeScale = 1f;  // Restaura el tiempo del juego
+        Time.timeScale = 1f;  
         Pausa = false;
     }
 
