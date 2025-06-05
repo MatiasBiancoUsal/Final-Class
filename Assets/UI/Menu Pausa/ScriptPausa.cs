@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class ScriptPausa : MonoBehaviour
 {
-    public GameObject ObjetoMenuPausa;   
-    private bool Pausa = false; 
+    public GameObject ObjetoMenuPausa;
+    private bool Pausa = false;
 
     void Start()
     {
-       
         ObjetoMenuPausa.SetActive(false);
         Time.timeScale = 1f;
+
+        Cursor.lockState = CursorLockMode.Locked; 
+        Cursor.visible = false; 
     }
 
     void Update()
@@ -32,15 +34,21 @@ public class ScriptPausa : MonoBehaviour
     public void ActivarPausa()
     {
         ObjetoMenuPausa.SetActive(true);
-        Time.timeScale = 0f;  
+        Time.timeScale = 0f;
         Pausa = true;
+
+        Cursor.lockState = CursorLockMode.None; 
+        Cursor.visible = true; 
     }
 
     public void Reanudar()
     {
         ObjetoMenuPausa.SetActive(false);
-        Time.timeScale = 1f;  
+        Time.timeScale = 1f;
         Pausa = false;
+
+        Cursor.lockState = CursorLockMode.Locked; 
+        Cursor.visible = false; 
     }
 
     public void Reiniciar()
@@ -50,3 +58,4 @@ public class ScriptPausa : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }
+
