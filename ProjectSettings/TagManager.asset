@@ -8,6 +8,7 @@ TagManager:
   - Enemigo
   - PowerUp
   - DescargaInsaciable
+  - Rompible
   layers:
   - Default
   - TransparentFX
