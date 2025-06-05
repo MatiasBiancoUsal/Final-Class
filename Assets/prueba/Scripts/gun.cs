@@ -49,8 +49,8 @@ public class gun : MonoBehaviour
     private void MyInput()
     {
         //se fija si podes mantener apretado con una metralleta o tapeas como con una escopeta
-        if (allowButtonHold) shooting = Input.GetKey(KeyCode.Mouse0);
-        else shooting = Input.GetKeyDown(KeyCode.Mouse0);
+        if (allowButtonHold) shooting = Input.GetKeyDown(KeyCode.G);
+        else shooting = Input.GetKeyDown(KeyCode.G);
 
         //Recargar
         if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading) Reload();

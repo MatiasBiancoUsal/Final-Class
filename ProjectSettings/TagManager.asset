@@ -8,6 +8,7 @@ TagManager:
   - Enemigo
   - PowerUp
   - DescargaInsaciable
+  - Pickup
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - enemyMask
+  - Projectile
   - 
   - 
   - 
