@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 960323516944412068}
   - component: {fileID: 7107064583860465155}
   - component: {fileID: 2236763222981794756}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: FeatherBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,4 +155,4 @@ MonoBehaviour:
   knockbackForce: 800
   enemyMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 512

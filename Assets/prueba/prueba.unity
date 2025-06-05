@@ -356,6 +356,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jarron (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4324818046220144688, guid: 4943cfa8d67662f4f8eab3872d8b76ae, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4749117377707002520, guid: 4943cfa8d67662f4f8eab3872d8b76ae, type: 3}
       propertyPath: dropChance
       value: 1
@@ -615,6 +619,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jarron (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4324818046220144688, guid: 4943cfa8d67662f4f8eab3872d8b76ae, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5016531204708401204, guid: 4943cfa8d67662f4f8eab3872d8b76ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.63
@@ -671,6 +679,10 @@ PrefabInstance:
     - target: {fileID: 4324818046220144688, guid: 4943cfa8d67662f4f8eab3872d8b76ae, type: 3}
       propertyPath: m_Name
       value: Jarron (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324818046220144688, guid: 4943cfa8d67662f4f8eab3872d8b76ae, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5016531204708401204, guid: 4943cfa8d67662f4f8eab3872d8b76ae, type: 3}
       propertyPath: m_LocalPosition.x
@@ -850,7 +862,7 @@ MonoBehaviour:
   range: 1.2
   enemyMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 512
 --- !u!65 &989110116
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1320,6 +1332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jarron (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4324818046220144688, guid: 4943cfa8d67662f4f8eab3872d8b76ae, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5016531204708401204, guid: 4943cfa8d67662f4f8eab3872d8b76ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.63
@@ -1539,6 +1555,10 @@ PrefabInstance:
     - target: {fileID: 4324818046220144688, guid: 4943cfa8d67662f4f8eab3872d8b76ae, type: 3}
       propertyPath: m_Name
       value: Jarron (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324818046220144688, guid: 4943cfa8d67662f4f8eab3872d8b76ae, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5016531204708401204, guid: 4943cfa8d67662f4f8eab3872d8b76ae, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2086,7 +2106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4832362363215778115, guid: 8162af3234554a749916a1a80a51c6f1, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9180290279101640940, guid: 8162af3234554a749916a1a80a51c6f1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2297,6 +2317,10 @@ PrefabInstance:
     - target: {fileID: 4324818046220144688, guid: 4943cfa8d67662f4f8eab3872d8b76ae, type: 3}
       propertyPath: m_Name
       value: Jarron
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324818046220144688, guid: 4943cfa8d67662f4f8eab3872d8b76ae, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5016531204708401204, guid: 4943cfa8d67662f4f8eab3872d8b76ae, type: 3}
       propertyPath: m_LocalPosition.x
