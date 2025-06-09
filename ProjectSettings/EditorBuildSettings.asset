@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: "Assets/Scenes/Prueba Men\xFA.unity"
+    guid: 03d29c2f97b050c4b961f0774b14f2d1
+  - enabled: 1
     path: Assets/prueba/prueba.unity
     guid: c9dc546ca35301547a8d6b36240e0b44
   - enabled: 1
