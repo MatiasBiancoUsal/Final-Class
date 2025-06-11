@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 2368250140890969175}
   - component: {fileID: 1460202103007228667}
   - component: {fileID: -9010830883269930983}
-  - component: {fileID: 7456606957990270145}
-  - component: {fileID: -8087938037735403170}
+  - component: {fileID: 5629114997258080227}
+  - component: {fileID: 728836527677669900}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Bullet Goma
   m_TagString: Bala
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!114 &-9010830883269930983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,14 +129,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
---- !u!136 &7456606957990270145
-CapsuleCollider:
+--- !u!135 &5629114997258080227
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8250922800378359078}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: cbb7d1e8b220ec247a738c26e04de2f8, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -147,12 +147,10 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-8087938037735403170
+--- !u!114 &728836527677669900
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,6 +159,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8250922800378359078}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78fe13bea1753b045950dc7d72d573e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b7940bb716f2a340a2f32bdd63d8486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifetime: 5

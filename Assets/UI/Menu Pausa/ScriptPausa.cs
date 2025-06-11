@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ScriptPausa : MonoBehaviour
 {
+    public GameObject player;
     public GameObject ObjetoMenuPausa;
     private bool Pausa = false;
 
@@ -33,6 +34,7 @@ public class ScriptPausa : MonoBehaviour
 
     public void ActivarPausa()
     {
+        Time.timeScale = 0;
         ObjetoMenuPausa.SetActive(true);
         Time.timeScale = 0f;
         Pausa = true;
@@ -43,6 +45,7 @@ public class ScriptPausa : MonoBehaviour
 
     public void Reanudar()
     {
+        Time.timeScale = 1;
         ObjetoMenuPausa.SetActive(false);
         Time.timeScale = 1f;
         Pausa = false;
@@ -53,9 +56,10 @@ public class ScriptPausa : MonoBehaviour
 
     public void Reiniciar()
     {
+        Destroy(player);
         Time.timeScale = 1f;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+
     }
 }
 

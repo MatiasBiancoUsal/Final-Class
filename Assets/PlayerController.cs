@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject gun;
+    
     
     
 
@@ -21,11 +21,7 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        if (controladorPowerUps.Instance.GetComponent<controladorPowerUps>().descargaInsaciableIsStored)
-        {
-            ActivateDescargaInsaciable();
-            Debug.Log("funcooooooooooo");
-        }
+        
     }
 
     void Update()
@@ -61,31 +57,18 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             controladorPowerUps.Instance.agarroDI();
-            ActivateDescargaInsaciable();
-            
-
+            controladorPowerUps.Instance.ActivateDescargaInsaciable();
+        }
+        if (other.gameObject.tag == "GomaDeMascar")
+        {
+            Destroy(other.gameObject);
+            controladorPowerUps.Instance.agarroBalaDeGoma();
+            controladorPowerUps.Instance.BalasDeGoma();
         }
     }
 
     
 
 
-    #region DescargaInsaciable
-    private void ActivateDescargaInsaciable()
-    {
-        DescargaInsaciable();
-        Invoke("StopDescargaInsaciable", 15.0f);
-    }
-    private void DescargaInsaciable()
-    {
-        gun.GetComponent<gun>().timeBetweenShooting = gun.GetComponent<gun>().timeBetweenShooting / 1.3f;
-        Debug.Log(gun.GetComponent<gun>().timeBetweenShooting);
-    }
-    private void StopDescargaInsaciable()
-    {
-        gun.GetComponent<gun>().timeBetweenShooting = gun.GetComponent<gun>().timeBetweenShooting * 1.3f;
-        Debug.Log(gun.GetComponent<gun>().timeBetweenShooting);
-    }
-
-    #endregion
+   
 }
