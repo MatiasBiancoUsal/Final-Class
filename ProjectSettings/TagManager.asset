@@ -9,6 +9,7 @@ TagManager:
   - PowerUp
   - DescargaInsaciable
   - Pickup
+  - GomaDeMascar
   layers:
   - Default
   - TransparentFX

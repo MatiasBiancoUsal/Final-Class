@@ -29,10 +29,16 @@ public class PlayerInventory : MonoBehaviour
     /// <summary>Añade munición (solo si ammoGained &gt; 0).</summary>
     public void AddItem(ItemData item)
     {
-        if (!item || item.ammoGained <= 0) return;
+        if (!item || item.ammoGained <= 0)
+        {
+            Debug.LogWarning("ItemData es nulo o no tiene munición.");
+            return;
+        }
 
         _ammo.TryAdd(item.type, 0);
         _ammo[item.type] += item.ammoGained;
+
+        Debug.Log($"Se añadió munición: {item.ammoGained} a {item.type}. Total: {_ammo[item.type]}");
 
         OnAmmoChanged?.Invoke(item.type, _ammo[item.type]);
     }
