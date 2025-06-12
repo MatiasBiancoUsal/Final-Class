@@ -25,14 +25,14 @@ public class PickupItem : MonoBehaviour
             // Ya tenía el arma → agregar munición
             inv.AddItem(itemData);
 
-            print(itemData.type);
+            print("Desbloqueado 1");
         }
         else
         {
             // No tenía el arma → desbloquear y opcionalmente dar munición
             inv.UnlockWeapon(itemData.type);
 
-            print(itemData.type);
+            print("Desbloqueado 1");
 
             // Si también da munición al desbloquear, se puede incluir esto:
             if (itemData.ammoGained > 0)
