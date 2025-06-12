@@ -1,13 +1,15 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 public class PickupItem : MonoBehaviour
 {
-    [SerializeField] private ItemData itemData;   // asigna en Inspector
+    [SerializeField] private ItemData itemData;
+
+    public WeaponType type = WeaponType.FeatherGun;
+    public int ammoGained = 10; 
 
     private void Reset()
     {
-        // Aseg�rate de que el collider sea Trigger para detectar la colisi�n
         GetComponent<Collider>().isTrigger = true;
     }
 
@@ -18,17 +20,27 @@ public class PickupItem : MonoBehaviour
         var inv = other.GetComponent<PlayerInventory>();
         if (!inv || !itemData) return;
 
-        if (itemData.ammoGained > 0)
+        if (inv.IsUnlocked(itemData.type))
         {
-            // Pickup de munici�n
+            // Ya tenía el arma → agregar munición
             inv.AddItem(itemData);
+
+            print(itemData.type);
         }
         else
         {
-            // Pickup de arma: la desbloquea
+            // No tenía el arma → desbloquear y opcionalmente dar munición
             inv.UnlockWeapon(itemData.type);
+
+            print(itemData.type);
+
+            // Si también da munición al desbloquear, se puede incluir esto:
+            if (itemData.ammoGained > 0)
+                inv.AddItem(itemData);
         }
 
-        Destroy(gameObject);   // desaparece la esfera
+        Destroy(gameObject);
     }
 }
+
+

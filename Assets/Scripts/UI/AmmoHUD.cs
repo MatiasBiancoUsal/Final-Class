@@ -47,7 +47,7 @@ public class AmmoHUD : MonoBehaviour
             ammoText.SetText(string.Format(format, amt));
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         if (_inv) _inv.OnAmmoChanged -= HandleAmmoChanged;
     }
