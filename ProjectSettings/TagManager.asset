@@ -18,11 +18,11 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
+  - Jugador
+  - Obstaculo
   - enemyMask
   - Projectile
-  - 
+  - EnemyProjectile
   - 
   - 
   - 
