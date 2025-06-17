@@ -2310,6 +2310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstWeaponGO: {fileID: 989110114}
   featherGunGO: {fileID: 1181009666}
+  ammoHUD: {fileID: 0}
 --- !u!114 &552147409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2372,6 +2373,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBarFill: {fileID: 1504679123}
+--- !u!114 &552147444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552147406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a942f0b38a13849b93489c69803930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterType: 0
 --- !u!1 &574180464
 GameObject:
   m_ObjectHideFlags: 0
@@ -6487,6 +6501,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1319606383168143206, guid: f023a71312845da4eadda58b552d72e6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 552147437}
+    - targetCorrespondingSourceObject: {fileID: 1319606383168143206, guid: f023a71312845da4eadda58b552d72e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 552147444}
   m_SourcePrefab: {fileID: 100100000, guid: f023a71312845da4eadda58b552d72e6, type: 3}
 --- !u!1001 &4936909578661062802
 PrefabInstance:
