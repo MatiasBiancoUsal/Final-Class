@@ -31,14 +31,14 @@ public class PlayerInventory : MonoBehaviour
     {
         if (!item || item.ammoGained <= 0)
         {
-            Debug.LogWarning("ItemData es nulo o no tiene munición.");
+            Debug.LogWarning("[INVENTORY] Item inválido o sin munición.");
             return;
         }
 
         _ammo.TryAdd(item.type, 0);
         _ammo[item.type] += item.ammoGained;
 
-        Debug.Log($"Se añadió munición: {item.ammoGained} a {item.type}. Total: {_ammo[item.type]}");
+        Debug.Log($"[INVENTORY] Añadida munición: {item.ammoGained} a {item.type}. Total ahora: {_ammo[item.type]}");
 
         OnAmmoChanged?.Invoke(item.type, _ammo[item.type]);
     }

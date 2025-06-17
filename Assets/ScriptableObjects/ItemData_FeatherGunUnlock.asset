@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ItemData_FeatherGunUnlock
   m_EditorClassIdentifier: 
   type: 1
-  ammoGained: 0
+  ammoGained: 15

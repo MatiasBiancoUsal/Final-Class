@@ -8,6 +8,9 @@ public class PlayerWeapons : MonoBehaviour
 
     private PlayerInventory _inventory;
     private AmmoHUD _hud;
+    [SerializeField] private AmmoHUD ammoHUD;
+
+    private PlayerInventory inv;
 
     private void Awake()
     {
@@ -39,7 +42,7 @@ public class PlayerWeapons : MonoBehaviour
     }
 
     /* Cambia el arma equipada y actualiza HUD */
-    private void Equip(WeaponType w)
+    public void Equip(WeaponType w)
     {
         // Bloquea armas que aún no se han recogido
         if (!_inventory.IsUnlocked(w)) return;
@@ -50,5 +53,19 @@ public class PlayerWeapons : MonoBehaviour
         featherGunGO.SetActive(w == WeaponType.FeatherGun);
 
         _hud?.OnWeaponEquipped(w);   // refresca balas en pantalla
+
+
+        // Notificar al HUD
+        if (ammoHUD != null)
+        {
+            ammoHUD.OnWeaponEquipped(w);
+            Debug.Log("[PlayerWeapons] HUD actualizado para: " + w);
+        }
+        else
+        {
+            Debug.LogWarning("[PlayerWeapons] No se asignó AmmoHUD.");
+        }
+
+
     }
 }
