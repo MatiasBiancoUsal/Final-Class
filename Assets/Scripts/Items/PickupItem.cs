@@ -20,23 +20,19 @@ public class PickupItem : MonoBehaviour
         var inv = other.GetComponent<PlayerInventory>();
         if (!inv || !itemData) return;
 
-        if (inv.IsUnlocked(itemData.type))
+        if (!inv.IsUnlocked(itemData.type))
         {
-            // Ya tenía el arma → agregar munición
-            inv.AddItem(itemData);
+            inv.UnlockWeapon(itemData.type);
+            if (itemData.ammoGained > 0)
+                inv.AddItem(itemData);
 
-            print("Desbloqueado 1");
+            // Forzar equipamiento si es un arma nueva
+            var pw = other.GetComponent<PlayerWeapons>();
+            if (pw) pw.SendMessage("Equip", itemData.type);
         }
         else
         {
-            // No tenía el arma → desbloquear y opcionalmente dar munición
-            inv.UnlockWeapon(itemData.type);
-
-            print("Desbloqueado 1");
-
-            // Si también da munición al desbloquear, se puede incluir esto:
-            if (itemData.ammoGained > 0)
-                inv.AddItem(itemData);
+            inv.AddItem(itemData);
         }
 
         Destroy(gameObject);

@@ -39,7 +39,7 @@ public class PlayerWeapons : MonoBehaviour
     }
 
     /* Cambia el arma equipada y actualiza HUD */
-    private void Equip(WeaponType w)
+    public void Equip(WeaponType w)
     {
         // Bloquea armas que aún no se han recogido
         if (!_inventory.IsUnlocked(w)) return;
