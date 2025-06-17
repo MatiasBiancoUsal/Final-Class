@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ZoomMinimapa : MonoBehaviour
 {
-    public GameObject minimapaChico;  // UI del minimapa pequeño
-    public GameObject minimapaGrande; // UI del minimapa zoom
+    public GameObject minimapaChico; 
+    public GameObject minimapaGrande; 
 
     void Update()
     {
