@@ -32,6 +32,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        // 1) Destruye este GameObject (jugador + su UI hijo)
+        Destroy(gameObject);
+        // 2) Recarga la escena actual
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
