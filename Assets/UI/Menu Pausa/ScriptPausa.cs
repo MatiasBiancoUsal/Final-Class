@@ -11,6 +11,8 @@ public class ScriptPausa : MonoBehaviour
     public Button botonSi;
     public Button botonNo;
 
+    public GameObject Jugador;
+
     private bool Pausa = false;
 
     void Start()
@@ -78,6 +80,7 @@ public class ScriptPausa : MonoBehaviour
     public void Reiniciar()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Destroy(Jugador);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
