@@ -59,11 +59,11 @@ public class PlayerWeapons : MonoBehaviour
         if (ammoHUD != null)
         {
             ammoHUD.OnWeaponEquipped(w);
-            Debug.Log("[PlayerWeapons] HUD actualizado para: " + w);
+            //Debug.Log("[PlayerWeapons] HUD actualizado para: " + w);
         }
         else
         {
-            Debug.LogWarning("[PlayerWeapons] No se asignó AmmoHUD.");
+            //Debug.LogWarning("[PlayerWeapons] No se asignó AmmoHUD.");
         }
 
 
