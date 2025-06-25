@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/prueba/prueba 1.unity
     guid: 7de1b7fba496bc1478dba977b8f333c9
+  - enabled: 1
+    path: Assets/prueba/mapaProceduralPrueba.unity
+    guid: bc814dc7c132d7540bae33c469317b5b
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
