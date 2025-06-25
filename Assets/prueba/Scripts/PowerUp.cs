@@ -7,17 +7,45 @@ public class PowerUp : MonoBehaviour
     public int precio = 100;
     public GameObject efectoPowerUp;
 
+    [Header("Item de munición que se otorga")]
+    public ItemData itemData;
+
+    private bool comprado = false; // <<<< NUEVO
+
     private void OnTriggerStay(Collider other)
     {
+        if (comprado) return; // <<<< evita compras múltiples
+
         if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
             PlayerDinero dineroJugador = other.GetComponent<PlayerDinero>();
-            if (dineroJugador != null && dineroJugador.dinero >= precio)
+            PlayerInventory inventario = other.GetComponent<PlayerInventory>();
+            PlayerWeapons armas = other.GetComponent<PlayerWeapons>();
+
+            if (dineroJugador != null && inventario != null && dineroJugador.dinero >= precio)
             {
+                comprado = true; // <<<< asegura una sola compra
+
                 dineroJugador.RestarDinero(precio);
-                ActivarPowerUp(other.gameObject); // << Activar efecto
+                ActivarPowerUp(other.gameObject);
+
+                if (itemData != null)
+                {
+                    if (!inventario.IsUnlocked(itemData.type))
+                    {
+                        inventario.UnlockWeapon(itemData.type);
+                        armas?.Equip(itemData.type);
+                    }
+
+                    inventario.AddItem(itemData);
+                }
+                else
+                {
+                    Debug.LogWarning("No se asignó ningún ItemData al PowerUp.");
+                }
+
                 Debug.Log("PowerUp comprado por $" + precio);
-                Destroy(gameObject); // Elimina el objeto PowerUp de la escena
+                Destroy(gameObject); // Destruir el objeto tras comprar
             }
             else
             {
@@ -32,6 +60,8 @@ public class PowerUp : MonoBehaviour
             Instantiate(efectoPowerUp, jugador.transform.position, Quaternion.identity);
     }
 }
+
+
 
 
 
