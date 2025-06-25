@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         //esto es para probar algo, borrar despues
         if (Input.GetKey("p"))
         {
-            SceneManager.LoadScene("mapaProceduralPrueba");
+            SceneManager.LoadScene("prueba 1");
         }
     }
 
