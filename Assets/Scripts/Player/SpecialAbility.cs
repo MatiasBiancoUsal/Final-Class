@@ -1,7 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-
 public class SpecialAbility : MonoBehaviour
 {
     public enum CharacterType
@@ -10,12 +9,6 @@ public class SpecialAbility : MonoBehaviour
     }
 
     public CharacterType characterType = CharacterType.Default;
-
-    [Header("Referencia al mensaje en pantalla")]
-    public TextMeshProUGUI mensajeUI;
-
-    [Header("Duración del mensaje en pantalla")]
-    public float duracionMensaje = 2f;
 
     void Update()
     {
@@ -31,25 +24,9 @@ public class SpecialAbility : MonoBehaviour
         {
             case CharacterType.Default:
                 Debug.Log("Este personaje no tiene habilidad especial.");
-                MostrarMensaje("Este personaje no tiene habilidad especial.");
+                print("Habilidad especial no disponible.");
                 break;
         }
     }
-
-    void MostrarMensaje(string texto)
-    {
-        if (mensajeUI != null)
-        {
-            mensajeUI.text = texto;
-            mensajeUI.gameObject.SetActive(true);
-            CancelInvoke(nameof(EsconderMensaje));
-            Invoke(nameof(EsconderMensaje), duracionMensaje);
-        }
-    }
-
-    void EsconderMensaje()
-    {
-        if (mensajeUI != null)
-            mensajeUI.gameObject.SetActive(false);
-    }
 }
+

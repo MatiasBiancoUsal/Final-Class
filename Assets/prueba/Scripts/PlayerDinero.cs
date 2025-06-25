@@ -21,7 +21,6 @@ public class PlayerDinero : MonoBehaviour
 
     public void RestarDinero(int cantidad)
     {
-        Debug.Log("[PlayerDinero] Restando $" + cantidad); // << Agregado
         dinero -= cantidad;
         ActualizarUI();
     }
