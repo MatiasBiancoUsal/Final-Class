@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -21,6 +19,7 @@ public class PlayerDinero : MonoBehaviour
 
     public void RestarDinero(int cantidad)
     {
+        Debug.Log($"[PlayerDinero] Se restan ${cantidad} — Total antes: {dinero}");
         dinero -= cantidad;
         ActualizarUI();
     }
@@ -31,4 +30,5 @@ public class PlayerDinero : MonoBehaviour
             textoDinero.text = "$" + dinero.ToString();
     }
 }
+
 
