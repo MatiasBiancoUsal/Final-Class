@@ -10,16 +10,29 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private int _currentHealth;
     public Image healthBarFill;
 
+    private PlayerShield _playerShield;
+
     void Awake()
     {
         _currentHealth = maxHealth;
         UpdateHealthUI();
+        _playerShield = GetComponent<PlayerShield>();
     }
 
     public void TakeDamage(int amount)
     {
+        // Si el escudo está activo, bloquea el daño
+        if (_playerShield != null && _playerShield.IsShieldActive())
+        {
+            Debug.Log("¡Daño bloqueado por el ESCUDO desde PlayerHealth!");
+            _playerShield.ConsumeShield(); // Desactiva y pone en cooldown
+            return; // no se baja la vida
+        }
+
+        // Si no hay escudo, se aplica daño normalmente
         _currentHealth = Mathf.Max(_currentHealth - amount, 0);
         UpdateHealthUI();
+
         if (_currentHealth <= 0)
             Die();
     }
@@ -32,9 +45,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        // 1) Destruye este GameObject (jugador + su UI hijo)
         Destroy(gameObject);
-        // 2) Recarga la escena actual
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
