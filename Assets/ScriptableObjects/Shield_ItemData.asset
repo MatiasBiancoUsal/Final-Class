@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e78410ae08f72ba4983475139095460f, type: 3}
   m_Name: Shield_ItemData
   m_EditorClassIdentifier: 
-  type: 0
-  ammoGained: 15
+  type: 2
+  ammoGained: 0
