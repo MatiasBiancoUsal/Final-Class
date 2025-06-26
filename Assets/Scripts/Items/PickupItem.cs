@@ -15,10 +15,38 @@ public class PickupItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
+        // 🔍 Prueba máxima: Verificamos si entra al trigger
+        Debug.Log("TOCÓ: " + other.name + " | TAG: " + other.tag);
+
+        if (!other.CompareTag("Player"))
+        {
+            Debug.Log("⛔ No tiene el tag Player");
+            return;
+        }
+
+        Debug.Log("✅ Tiene el tag Player");
 
         var inv = other.GetComponent<PlayerInventory>();
         if (!inv || !itemData) return;
+
+        // ESCUDO
+        if (itemData.type == WeaponType.Shield)
+        {
+            Debug.Log("🛡️ Intentando activar escudo..."); // para ver si entra
+
+            var shield = other.GetComponent<PlayerShield>();
+            if (shield != null)
+            {
+                shield.ActivateShield();
+            }
+            else
+            {
+                Debug.Log("⚠️ PlayerShield NO encontrado en el jugador");
+            }
+
+            Destroy(gameObject);
+            return; // Salimos para no seguir con armas
+        }
 
         if (!inv.IsUnlocked(itemData.type))
         {
@@ -38,5 +66,3 @@ public class PickupItem : MonoBehaviour
         Destroy(gameObject);
     }
 }
-
-
