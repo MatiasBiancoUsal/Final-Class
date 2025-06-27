@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TripleShotPickup : MonoBehaviour
@@ -10,11 +8,9 @@ public class TripleShotPickup : MonoBehaviour
         {
             var tripleShot = other.GetComponent<PlayerTripleShot>();
             if (tripleShot != null)
-            {
-                tripleShot.ActivatePowerup();
-            }
+                tripleShot.EnableTripleShot(10f); // dura 10 segundos
 
-            Destroy(gameObject); // El power-up desaparece
+            Destroy(gameObject);
         }
     }
 }

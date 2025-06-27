@@ -1,23 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerTripleShot : MonoBehaviour
 {
     public bool tripleShotActive = false;
-    public float duration = 10f;
 
-    public void ActivatePowerup()
+    public void EnableTripleShot(float duration)
     {
         tripleShotActive = true;
-        Debug.Log("Triple Shot ACTIVADO!");
-        StartCoroutine(TripleShotTimer());
+        CancelInvoke(nameof(DisableTripleShot));
+        Invoke(nameof(DisableTripleShot), duration);
     }
 
-    private IEnumerator TripleShotTimer()
+    private void DisableTripleShot()
     {
-        yield return new WaitForSeconds(duration);
         tripleShotActive = false;
-        Debug.Log("Triple Shot FINALIZADO.");
     }
 }
