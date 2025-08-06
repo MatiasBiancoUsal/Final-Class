@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TripleShotPickup : MonoBehaviour
 {
+    [Tooltip("Duración del power-up en segundos")]
+    public float duration = 10f;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            var tripleShot = other.GetComponent<PlayerTripleShot>();
-            if (tripleShot != null)
-            {
-                tripleShot.ActivatePowerup();
-            }
+        // 1) Intentamos obtener PlayerTripleShot en el collider o en sus padres
+        var triple = other.GetComponent<PlayerTripleShot>()
+                  ?? other.GetComponentInParent<PlayerTripleShot>();
 
-            Destroy(gameObject); // El power-up desaparece
+        if (triple != null)
+        {
+            triple.EnableTripleShot(duration);
+            Destroy(gameObject);
         }
     }
 }
+

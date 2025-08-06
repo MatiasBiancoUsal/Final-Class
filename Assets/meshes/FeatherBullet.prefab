@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  lifeTime: 2
+  lifeTime: 3
   aoeRadius: 2.5
   damage: 20
   knockbackForce: 800
