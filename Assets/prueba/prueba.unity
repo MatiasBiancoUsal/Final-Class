@@ -12039,11 +12039,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 600730996}
+    m_TransformParent: {fileID: 1913650948}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1f0f6247b377f0e449884359e6dcef80, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.20999998
+      value: 0.20999996
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f0f6247b377f0e449884359e6dcef80, type: 3}
       propertyPath: m_LocalScale.y
@@ -12051,7 +12051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f0f6247b377f0e449884359e6dcef80, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.20999998
+      value: 0.20999996
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f0f6247b377f0e449884359e6dcef80, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12103,7 +12103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1f0f6247b377f0e449884359e6dcef80, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13328,10 +13328,11 @@ Transform:
   m_GameObject: {fileID: 1913650947}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.389, z: 0.149}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1181009670}
   m_Father: {fileID: 600730996}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1925075013
@@ -14788,9 +14789,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8653423385971188597, guid: f023a71312845da4eadda58b552d72e6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1913650948}
-    - targetCorrespondingSourceObject: {fileID: 8653423385971188597, guid: f023a71312845da4eadda58b552d72e6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1181009670}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1319606383168143206, guid: f023a71312845da4eadda58b552d72e6, type: 3}
       insertIndex: -1
