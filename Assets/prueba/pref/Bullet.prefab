@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -9010830883269930983}
   - component: {fileID: 7456606957990270145}
   - component: {fileID: -8087938037735403170}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bullet
   m_TagString: Bala
   m_Icon: {fileID: 0}
@@ -128,7 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61f58100d7a33de4992b8112747b8f63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 512
+  aoeRadius: 2.5
   damage: 5
+  knockbackForce: 800
 --- !u!136 &7456606957990270145
 CapsuleCollider:
   m_ObjectHideFlags: 0
