@@ -37,7 +37,7 @@ public class teleport : MonoBehaviour
         }
         if (leftDoor)
         {
-            player.transform.position = new Vector3(player.transform.position.x + distance, player.transform.position.y, player.transform.position.z);
+            player.transform.position = new Vector3(player.transform.position.x - distance, player.transform.position.y, player.transform.position.z);
         }
         if (rightDoor)
         {
