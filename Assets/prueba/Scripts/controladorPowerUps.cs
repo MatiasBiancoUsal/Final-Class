@@ -45,6 +45,8 @@ public class controladorPowerUps : MonoBehaviour
     }
 
     #region Descarga Insaciable
+
+
     public void agarroDI()
     {
         descargaInsaciableIsStored = true;

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -9010830883269930983}
   - component: {fileID: 5629114997258080227}
   - component: {fileID: 728836527677669900}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bullet Goma
   m_TagString: Bala
   m_Icon: {fileID: 0}

@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class bala : MonoBehaviour
 {
-    public float damage;
+    
+
+    public LayerMask enemyMask;
+    public float aoeRadius = 2.5f;
+    public int damage = 20;
+    public float knockbackForce = 800f;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -18,4 +23,5 @@ public class bala : MonoBehaviour
 
         }
     }
+   
 }

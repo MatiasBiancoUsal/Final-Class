@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 697056345312097402}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -211,8 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b5088ea706b314ca33e75d52f3f0b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gun: {fileID: 1176606513586640754}
-  powerUps: {fileID: 4101313918300791398, guid: cb14ec3106a73764e8c327c8d25346ee, type: 3}
   moveSpeed: 5
   mouseSensitivity: 2
   verticalLimit: 80
