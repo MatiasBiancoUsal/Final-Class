@@ -59,13 +59,35 @@ public class controladorPowerUps : MonoBehaviour
     }
     private void DescargaInsaciable()
     {
-        gun.GetComponent<gun>().timeBetweenShooting = gun.GetComponent<gun>().timeBetweenShooting / 1.3f;
-        Debug.Log(gun.GetComponent<gun>().timeBetweenShooting);
+        // gun.GetComponent<FeatherGun>().cooldown = gun.GetComponent<FeatherGun>().cooldown / 1.3f;
+        //gun.GetComponent<gun>().timeBetweenShooting = gun.GetComponent<gun>().timeBetweenShooting / 1.3f;
+        // Debug.Log(gun.GetComponent<gun>().timeBetweenShooting);
+        var fg = gun.GetComponent<FeatherGun>();
+        if (fg != null)
+        {
+            fg.cooldown /= 1.3f;
+            Debug.Log("Descarga Insaciable activada");
+        }
+        else
+        {
+            Debug.LogWarning("No se encontró FeatherGun al activar Descarga Insaciable");
+        }
     }
     private void StopDescargaInsaciable()
     {
-        gun.GetComponent<gun>().timeBetweenShooting = gun.GetComponent<gun>().timeBetweenShooting * 1.3f;
-        Debug.Log(gun.GetComponent<gun>().timeBetweenShooting);
+        // gun.GetComponent<FeatherGun>().cooldown = gun.GetComponent<FeatherGun>().cooldown * 1.3f;
+        //gun.GetComponent<gun>().timeBetweenShooting = gun.GetComponent<gun>().timeBetweenShooting * 1.3f;
+        //  Debug.Log(gun.GetComponent<gun>().timeBetweenShooting);
+        var fg = gun.GetComponent<FeatherGun>();
+        if (fg != null)
+        {
+            fg.cooldown *= 1.3f;
+            Debug.Log("Descarga Insaciable desactivada");
+        }
+        else
+        {
+            Debug.LogWarning("No se encontró FeatherGun al desactivar Descarga Insaciable");
+        }
     }
     #endregion
 }
