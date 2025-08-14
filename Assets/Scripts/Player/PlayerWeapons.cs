@@ -1,16 +1,18 @@
 using UnityEngine;
 
+/// <summary>
+/// Gestiona equipar armas y unifica la entrada de disparo (solo CLICK IZQUIERDO).
+/// </summary>
 public class PlayerWeapons : MonoBehaviour
 {
-    [Header("GOs de las armas (hijos)")]
-    public GameObject firstWeaponGO;   // cuchillo
-    public GameObject featherGunGO;    // pluma
+    [Header("Armas (hijos)")]
+    public GameObject firstWeaponGO;   // melee / cuchillo
+    public GameObject featherGunGO;    // pistola de plumas
 
     private PlayerInventory _inventory;
     private AmmoHUD _hud;
-    [SerializeField] private AmmoHUD ammoHUD;
 
-    private PlayerInventory inv;
+    [SerializeField] private AmmoHUD ammoHUD; // opcional si ya tenÃ©s uno en escena
 
     private void Awake()
     {
@@ -18,54 +20,43 @@ public class PlayerWeapons : MonoBehaviour
         _hud = FindFirstObjectByType<AmmoHUD>();
     }
 
+    private void Start()
+    {
+        // Asegura visibilidad correcta al comenzar
+        Equip(_inventory != null ? _inventory.equipped : WeaponType.FirstWeapon);
+    }
+
     private void Update()
     {
-        /* ????????? Equipar armas ????????? */
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            Equip(WeaponType.FirstWeapon);
+        // Cambios de arma opcionales
+        if (Input.GetKeyDown(KeyCode.Alpha1)) Equip(WeaponType.FirstWeapon);
+        if (Input.GetKeyDown(KeyCode.Alpha2)) Equip(WeaponType.FeatherGun);
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            Equip(WeaponType.FeatherGun);
-
-        /* ????????? Disparar / Atacar ????????? */
-        bool shooting = Input.GetKeyDown(KeyCode.G)      // tecla G
-                     || Input.GetMouseButtonDown(0);     // clic izquierdo
-
-        if (shooting)
+        // DISPARO: solo click izquierdo
+        if (Input.GetMouseButtonDown(0))
         {
             WeaponBase wb = _inventory.equipped == WeaponType.FirstWeapon
-                            ? firstWeaponGO.GetComponent<WeaponBase>()
-                            : featherGunGO.GetComponent<WeaponBase>();
+                ? firstWeaponGO.GetComponent<WeaponBase>()
+                : featherGunGO.GetComponent<WeaponBase>();
 
             wb?.TryShoot();
         }
     }
 
-    /* Cambia el arma equipada y actualiza HUD */
+    /// <summary>Cambia el arma equipada y actualiza HUD/visibilidad.</summary>
     public void Equip(WeaponType w)
     {
-        // Bloquea armas que aún no se han recogido
-        if (!_inventory.IsUnlocked(w)) return;
+        if (_inventory == null) return;
+
+        // No permitir equipar armas no desbloqueadas
+        if (!_inventory.IsUnlocked(w)) w = WeaponType.FirstWeapon;
 
         _inventory.equipped = w;
 
-        firstWeaponGO.SetActive(w == WeaponType.FirstWeapon);
-        featherGunGO.SetActive(w == WeaponType.FeatherGun);
+        if (firstWeaponGO != null)  firstWeaponGO.SetActive(w == WeaponType.FirstWeapon);
+        if (featherGunGO != null)   featherGunGO.SetActive(w == WeaponType.FeatherGun);
 
-        _hud?.OnWeaponEquipped(w);   // refresca balas en pantalla
-
-
-        // Notificar al HUD
-        if (ammoHUD != null)
-        {
-            ammoHUD.OnWeaponEquipped(w);
-            //Debug.Log("[PlayerWeapons] HUD actualizado para: " + w);
-        }
-        else
-        {
-            //Debug.LogWarning("[PlayerWeapons] No se asignó AmmoHUD.");
-        }
-
-
+        _hud?.OnWeaponEquipped(w);
+        ammoHUD?.OnWeaponEquipped(w);
     }
 }

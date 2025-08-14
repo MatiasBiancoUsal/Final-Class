@@ -5,24 +5,21 @@ public class CargaReinicio : MonoBehaviour
 {
     public Image imagenCarga;
     public GameObject textoCarga;
-
     public float tiempoCarga = 2f;
 
-    public GameObject confirmacionReinicio; 
+    public GameObject confirmacionReinicio;
 
     private float tiempoActual = 0f;
     private bool reinicioEjecutado = false;
+    private PauseManager _pause;
 
     void Start()
     {
-        if (imagenCarga != null)
-            imagenCarga.fillAmount = 0f;
+        _pause = FindFirstObjectByType<PauseManager>();
 
-        if (textoCarga != null)
-            textoCarga.SetActive(false);
-
-        if (confirmacionReinicio != null)
-            confirmacionReinicio.SetActive(false); 
+        if (imagenCarga) imagenCarga.fillAmount = 0f;
+        if (textoCarga)  textoCarga.SetActive(false);
+        if (confirmacionReinicio) confirmacionReinicio.SetActive(false);
     }
 
     void Update()
@@ -32,14 +29,8 @@ public class CargaReinicio : MonoBehaviour
             tiempoActual += Time.unscaledDeltaTime;
             float progreso = Mathf.Clamp01(tiempoActual / tiempoCarga);
 
-            if (imagenCarga != null)
-            {
-                imagenCarga.fillAmount = progreso;
-                imagenCarga.gameObject.SetActive(true);
-            }
-
-            if (textoCarga != null)
-                textoCarga.SetActive(true);
+            if (imagenCarga) { imagenCarga.fillAmount = progreso; imagenCarga.gameObject.SetActive(true); }
+            if (textoCarga)  textoCarga.SetActive(true);
 
             if (progreso >= 1f && !reinicioEjecutado)
             {
@@ -51,26 +42,22 @@ public class CargaReinicio : MonoBehaviour
         {
             tiempoActual = 0f;
             reinicioEjecutado = false;
-
-            if (imagenCarga != null)
-            {
-                imagenCarga.fillAmount = 0f;
-                imagenCarga.gameObject.SetActive(false);
-            }
-
-            if (textoCarga != null)
-                textoCarga.SetActive(false);
+            if (imagenCarga) { imagenCarga.fillAmount = 0f; imagenCarga.gameObject.SetActive(false); }
+            if (textoCarga)  textoCarga.SetActive(false);
         }
     }
 
     void MostrarConfirmacion()
     {
-        Time.timeScale = 0f;
+        if (_pause && !PauseManager.IsPaused)
+            _pause.TogglePause(); // pauses game + unlocks cursor + shows main panel
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
-        if (confirmacionReinicio != null)
+        if (confirmacionReinicio)
+        {
             confirmacionReinicio.SetActive(true);
+            // hide main panel if you want only the confirmation visible:
+            if (_pause) _pause.GetComponent<PauseManager>()?.gameObject
+                ?.GetComponentInChildren<Canvas>(true); // no-op, just to show place—main panel is already active via PauseManager
+        }
     }
 }
