@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FeatherGun : WeaponBase
@@ -14,65 +12,58 @@ public class FeatherGun : WeaponBase
     {
         base.Awake();
         weaponType = WeaponType.FeatherGun;
-
-        // Cacheamos el componente para no buscar cada vez
-        _tripleShot = _inventory.GetComponent<PlayerTripleShot>()
-                     ?? _inventory.GetComponentInChildren<PlayerTripleShot>();
+        _tripleShot = GetComponentInParent<PlayerTripleShot>();
     }
 
     public override void TryShoot()
     {
-        if (!projectilePrefab || !muzzle)
-            return;
+        if (!projectilePrefab || !muzzle) return;
+        if (!CanShoot) return;
 
-        // 1) Comprueba cooldown y munición
-        if (!CanShoot)
-            return;
-
-        // 2) Ejecuta el gasto de bala, el cooldown y dispara la animación "Shoot"
         base.TryShoot();
 
-        // 3) Genera los proyectiles
-        var tripleShot = _inventory.GetComponent<PlayerTripleShot>();
-        if (tripleShot != null && tripleShot.tripleShotActive)
+        bool doTriple = _tripleShot && _tripleShot.tripleShotActive;
+
+        if (doTriple)
         {
-            FireProjectileAtAngle(0);
-            FireProjectileAtAngle(-15);
-            FireProjectileAtAngle(15);
+            FireProjectileAtAngle(0f);
+            FireProjectileAtAngle(-15f);
+            FireProjectileAtAngle(15f);
         }
         else
         {
-            FireProjectileAtAngle(0);
+            FireProjectileAtAngle(0f);
         }
     }
 
-
-    private void FireProjectileAtAngle(float angleOffset)
+    private void FireProjectileAtAngle(float yawOffsetDegrees)
     {
-        // rotación yaw + offset
-        Quaternion rot = Quaternion.Euler(
-            0,
-            muzzle.rotation.eulerAngles.y + angleOffset,
-            0
-        );
-        // OFFSET ADELANTE (0.5m) y un poco arriba (si hiciera falta)
-        Vector3 spawnPos = muzzle.position + muzzle.forward * 0.5f + Vector3.up * 0.1f;
+        // Mantiene el pitch del muzzle y gira solo en Y el offset lateral
+        Quaternion rot = Quaternion.AngleAxis(yawOffsetDegrees, Vector3.up) * muzzle.rotation;
 
-        var proj = Instantiate(projectilePrefab, spawnPos, rot);
-        Rigidbody rb = proj.GetComponent<Rigidbody>();
-        if (rb != null)
+        Vector3 spawnPos = muzzle.position + muzzle.forward * 0.5f;
+        var go = Instantiate(projectilePrefab, spawnPos, rot);
+
+        // Ignorar colisiones contra TODO el jugador
+        var projCol = go.GetComponent<Collider>();
+        var playerRoot = _inventory ? _inventory.gameObject : GetComponentInParent<PlayerInventory>()?.gameObject;
+        if (projCol && playerRoot)
         {
-            rb.velocity = proj.transform.forward * 24f;
-            rb.useGravity = false;
+            foreach (var col in playerRoot.GetComponentsInChildren<Collider>(true))
+                Physics.IgnoreCollision(projCol, col);
         }
 
-        // Ignorar colisión con TODO el jugador (root y hijos)
-        var projCol = proj.GetComponent<Collider>();
-        var playerRoot = _inventory.gameObject;
-        foreach (var col in playerRoot.GetComponentsInChildren<Collider>())
-            Physics.IgnoreCollision(projCol, col);
-
-        Debug.DrawRay(spawnPos, proj.transform.forward * 2f, Color.red, 1.5f);
-        Debug.Log("Bala disparada en ángulo: " + angleOffset);
+        // Configurar proyectil
+        var proj = go.GetComponent<FeatherProjectile>();
+        if (proj != null)
+        {
+            bool bouncy = _powerUps && _powerUps.BouncyAmmoActive;
+            proj.Initialize(bouncy);
+        }
+        else
+        {
+            var rb = go.GetComponent<Rigidbody>();
+            if (rb) { rb.useGravity = false; rb.velocity = go.transform.forward * 24f; }
+        }
     }
 }
