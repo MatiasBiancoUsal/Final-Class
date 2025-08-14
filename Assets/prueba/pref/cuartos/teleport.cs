@@ -11,37 +11,47 @@ public class teleport : MonoBehaviour
     public bool leftDoor;
     public bool rightDoor;
 
-    public GameObject player;
+     GameObject player;
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void TeleportTo(Vector3 newPos)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        CharacterController cc = player.GetComponent<CharacterController>();
+        if (cc != null)
+        {
+            cc.enabled = false;
+            player.transform.position = newPos;
+            cc.enabled = true;
+        }
+        else
+        {
+            player.transform.position = newPos;
+        }
     }
 
     public void CheckTeleport()
     {
+        
         if (upDoor)
         {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + distance);
+            TeleportTo(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + distance));
+           // player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + distance);
+           
         }
-        if (downDoor)
+        else if (downDoor)
         {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - distance);
+            TeleportTo(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - distance));
+           // player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - distance);
         }
-        if (leftDoor)
+        else if (leftDoor)
         {
-            player.transform.position = new Vector3(player.transform.position.x - distance, player.transform.position.y, player.transform.position.z);
+            TeleportTo(new Vector3(player.transform.position.x - distance, player.transform.position.y, player.transform.position.z));
+          //  player.transform.position = new Vector3(player.transform.position.x - distance, player.transform.position.y, player.transform.position.z);
         }
-        if (rightDoor)
+        else if (rightDoor)
         {
-            player.transform.position = new Vector3(player.transform.position.x + distance, player.transform.position.y, player.transform.position.z);
+            TeleportTo(new Vector3(player.transform.position.x + distance, player.transform.position.y, player.transform.position.z));
+           // player.transform.position = new Vector3(player.transform.position.x + distance, player.transform.position.y, player.transform.position.z);
         }
     }
 
@@ -61,6 +71,9 @@ public class teleport : MonoBehaviour
 
         if (player.gameObject.tag == "Player")
         {
+            
+           
+            
             CheckTeleport();
 
         }
