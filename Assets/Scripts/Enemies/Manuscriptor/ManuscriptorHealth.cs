@@ -24,9 +24,16 @@ public class ManuscriptorHealth : MonoBehaviour, IDamageable
 
     private bool _isDead;
 
+
+    //agregado por Maximo para el contador de enemigos, borrar o comentar ante cualquier conflicto
+    public GameObject roomManager;
+
     void Awake()
     {
         _currentHealth = maxHealth;
+
+        //agregado por Maximo para el contador de enemigos, borrar o comentar ante cualquier conflicto
+        roomManager.GetComponent<RoomManager>().numeroDeEnemigos++;
     }
 
     public void TakeDamage(int amount)
@@ -56,12 +63,17 @@ public class ManuscriptorHealth : MonoBehaviour, IDamageable
         if (animator != null)
             animator.SetTrigger(deathTrigger);
         else
-            Destroy(transform.root.gameObject, 0.1f);
+            Destroy(gameObject, 0.1f);
+       // Destroy(transform.root.gameObject, 0.1f);
+
+        //agregado por Maximo para el contador de enemigos, borrar o comentar ante cualquier conflicto
+        roomManager.GetComponent<RoomManager>().numeroDeEnemigos--;
     }
 
     // Llamado desde Animation Event en el último frame de Die
     public void OnDeathAnimationEnd()
     {
-        Destroy(transform.root.gameObject);
+        Destroy(gameObject, 0.1f);
+       // Destroy(transform.root.gameObject);
     }
 }

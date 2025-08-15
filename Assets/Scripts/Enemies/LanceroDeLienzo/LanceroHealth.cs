@@ -25,9 +25,15 @@ public class LanceroHealth : MonoBehaviour, IDamageable
     public Animator animator;  // El Animator del child
     public LanceroAI ai;        // El LanceroAI del parent
 
+    //agregado por Maximo para el contador de enemigos, borrar o comentar ante cualquier conflicto
+    public GameObject roomManager;
+
     void Awake()
     {
         _currentHealth = maxHealth;
+
+        //agregado por Maximo para el contador de enemigos, borrar o comentar ante cualquier conflicto
+        roomManager.GetComponent<RoomManager>().numeroDeEnemigos++;
     }
 
     public void TakeDamage(int amount)
@@ -70,11 +76,16 @@ public class LanceroHealth : MonoBehaviour, IDamageable
         if (animator != null)
             animator.SetTrigger(deathTrigger);
         else
-            Destroy(transform.root.gameObject, 0.1f);
+            Destroy(gameObject, 0.1f);
+        //Destroy(transform.root.gameObject, 0.1f);
+
+        //agregado por Maximo para el contador de enemigos, borrar o comentar ante cualquier conflicto
+        roomManager.GetComponent<RoomManager>().numeroDeEnemigos--;
     }
 
     public void OnDeathAnimationEnd()
     {
-        Destroy(transform.root.gameObject);
+        Destroy(gameObject, 0.1f);
+        //Destroy(transform.root.gameObject);
     }
 }
