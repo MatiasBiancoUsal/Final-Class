@@ -21,6 +21,7 @@ public class DungeonGenerator : MonoBehaviour
     public int startPos = 0;
     public Rule[] rooms;
     public Vector2 offset;
+    public GameObject player; // 👈 el jugador ya está en la escena
 
     List<Cell> board;
 
@@ -158,6 +159,7 @@ public class DungeonGenerator : MonoBehaviour
 
         int cellIndex = 0;
         HashSet<GameObject> usedRooms = new HashSet<GameObject>();
+        RoomBehaviour firstRoom = null;
         RoomBehaviour lastRoom = null;
 
         // 1. Colocar los cuartos obligatorios
@@ -176,6 +178,9 @@ public class DungeonGenerator : MonoBehaviour
             newRoom.UpdateRoom(board[pos.x + pos.y * size.x].status);
             newRoom.name += $" {pos.x}-{pos.y}";
             newRoom.DisableHatch();
+
+            if (firstRoom == null)
+                firstRoom = newRoom;
 
             lastRoom = newRoom;
         }
@@ -216,6 +221,9 @@ public class DungeonGenerator : MonoBehaviour
             newRoom.name += $" {pos.x}-{pos.y}";
             newRoom.DisableHatch();
 
+            if (firstRoom == null)
+                firstRoom = newRoom;
+
             lastRoom = newRoom;
         }
 
@@ -223,6 +231,12 @@ public class DungeonGenerator : MonoBehaviour
         if (lastRoom != null)
         {
             lastRoom.EnableHatch();
+        }
+
+        // 4. Mover jugador al primer cuarto
+        if (firstRoom != null && player != null)
+        {
+            player.transform.position = firstRoom.transform.position + new Vector3(0, 1, 0);
         }
     }
 }
