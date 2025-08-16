@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -159,7 +158,9 @@ public class DungeonGenerator : MonoBehaviour
 
         int cellIndex = 0;
         HashSet<GameObject> usedRooms = new HashSet<GameObject>();
+        RoomBehaviour lastRoom = null;
 
+        // 1. Colocar los cuartos obligatorios
         foreach (var room in obligatoryRooms)
         {
             var pos = visitedCells[cellIndex++];
@@ -174,8 +175,12 @@ public class DungeonGenerator : MonoBehaviour
 
             newRoom.UpdateRoom(board[pos.x + pos.y * size.x].status);
             newRoom.name += $" {pos.x}-{pos.y}";
+            newRoom.DisableHatch();
+
+            lastRoom = newRoom;
         }
 
+        // 2. Colocar opcionales
         Shuffle(optionalRooms);
 
         while (cellIndex < visitedCells.Count)
@@ -209,6 +214,15 @@ public class DungeonGenerator : MonoBehaviour
 
             newRoom.UpdateRoom(board[pos.x + pos.y * size.x].status);
             newRoom.name += $" {pos.x}-{pos.y}";
+            newRoom.DisableHatch();
+
+            lastRoom = newRoom;
+        }
+
+        // 3. Activar la escotilla SOLO en el último cuarto
+        if (lastRoom != null)
+        {
+            lastRoom.EnableHatch();
         }
     }
 }

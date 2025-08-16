@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +5,7 @@ using UnityEngine;
 public class RoomBehaviour : MonoBehaviour
 {
     public GameObject[] doors;
+    public GameObject hatch; // Escotilla en el prefab
 
     public void UpdateRoom(bool[] status)
     {
@@ -13,5 +13,17 @@ public class RoomBehaviour : MonoBehaviour
         {
             doors[i].SetActive(status[i]);
         }
+    }
+
+    public void EnableHatch()
+    {
+        if (hatch != null)
+            hatch.SetActive(true);
+    }
+
+    public void DisableHatch()
+    {
+        if (hatch != null)
+            hatch.SetActive(false);
     }
 }
