@@ -5,12 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour
 {
+
+
+    public GameObject roomManager;
     GameObject player;
+
+
+
     private void OnTriggerEnter(Collider other)
     {
         player = other.gameObject;
 
-        if (player.gameObject.tag == "Player")
+        if (player.gameObject.tag == "Player" && roomManager.GetComponent<RoomManager>().cuartoCompletado)
         {
 
             SceneManager.LoadScene(1);
