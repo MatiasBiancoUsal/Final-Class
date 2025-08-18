@@ -12,7 +12,7 @@ public class PlayerWeapons : MonoBehaviour
     private PlayerInventory _inventory;
     private AmmoHUD _hud;
 
-    [SerializeField] private AmmoHUD ammoHUD; // opcional si ya tenés uno en escena
+    [SerializeField] public AmmoHUD ammoHUD; // opcional si ya tenés uno en escena
 
     private void Awake()
     {
