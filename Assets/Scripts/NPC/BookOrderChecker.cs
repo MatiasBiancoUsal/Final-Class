@@ -2,11 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class BookOrderChecker : MonoBehaviour
 {
     public DropSlot[] slots;
     public RewardManager rewardManager;
+
+    // agregado: cierre y notificación
+    public GameObject minigameRoot;
+    public event Action<bool> onFinished;
+
+    void Awake()
+    {
+        if (minigameRoot == null) minigameRoot = gameObject;
+    }
 
     public void CheckOrder()
     {
@@ -15,7 +25,8 @@ public class BookOrderChecker : MonoBehaviour
             if (slot.transform.childCount == 0)
             {
                 Debug.Log($"Slot {slot.name} está vacío. Esperaba: {slot.correctBookName}");
-                Debug.Log("¡Orden incorrecto!");
+                Debug.Log("Orden incorrecto!");
+                Close(false);
                 return;
             }
 
@@ -23,16 +34,23 @@ public class BookOrderChecker : MonoBehaviour
             string childName = child.name.Replace("(Clone)", "").Trim();
             string expected = slot.correctBookName.Trim();
 
-            if (!childName.Equals(expected, System.StringComparison.OrdinalIgnoreCase))
+            if (!childName.Equals(expected, StringComparison.OrdinalIgnoreCase))
             {
                 Debug.Log($"Slot {slot.name} contiene '{childName}' pero esperaba '{expected}'.");
-                Debug.Log("¡Orden incorrecto!");
+                Debug.Log("Orden incorrecto!");
+                Close(false);
                 return;
             }
         }
 
-        Debug.Log("¡Orden correcto!");
+        Debug.Log("Orden correcto!");
         if (rewardManager != null) rewardManager.GiveReward(10);
+        Close(true);
+    }
+
+    public void Close(bool win)
+    {
+        if (minigameRoot != null) minigameRoot.SetActive(false);
+        onFinished?.Invoke(win);
     }
 }
-

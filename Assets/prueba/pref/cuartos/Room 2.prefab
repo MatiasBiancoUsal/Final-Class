@@ -277,7 +277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4848547426626615228}
-  - component: {fileID: 7229779263864618093}
+  - component: {fileID: 2436247388221753068}
   m_Layer: 0
   m_Name: Room 2
   m_TagString: Untagged
@@ -302,7 +302,7 @@ Transform:
   - {fileID: 6062529675544644560}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7229779263864618093
+--- !u!114 &2436247388221753068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4665294873750504796}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a4b4cd814bd14b4bb82076eae69eb7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 45ef783c0462cee41bc689969e99d415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   doors:
@@ -319,7 +319,6 @@ MonoBehaviour:
   - {fileID: 7608936061847878324}
   - {fileID: 6505330891677104602}
   - {fileID: 1878796292137999064}
-  gridPosition: {x: 0, y: 0}
 --- !u!1 &4985387728718284914
 GameObject:
   m_ObjectHideFlags: 0

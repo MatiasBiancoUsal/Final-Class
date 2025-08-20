@@ -4,45 +4,69 @@ using UnityEngine;
 
 public class teleport : MonoBehaviour
 {
-    public float distance;
+    public Material material;
+
+     float distance = 40f;
+
+    public GameObject roomManager;
+    
 
     public bool upDoor;
     public bool downDoor;
     public bool leftDoor;
     public bool rightDoor;
 
-    public GameObject player;
 
-    // Start is called before the first frame update
-    void Start()
+    
+     GameObject player;
+
+   
+
+    private void TeleportTo(Vector3 newPos)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        CharacterController cc = player.GetComponent<CharacterController>();
+        if (cc != null)
+        {
+            cc.enabled = false;
+            player.transform.position = newPos;
+            cc.enabled = true;
+        }
+        else
+        {
+            player.transform.position = newPos;
+        }
     }
 
     public void CheckTeleport()
     {
-        if (upDoor)
+        if (roomManager.GetComponent<RoomManager>().cuartoCompletado)
         {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + distance);
+            
+           
+                            
+                            if (upDoor)
+                            {
+                                TeleportTo(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + distance));
+                               // player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + distance);
+           
+                            }
+                            else if (downDoor)
+                            {
+                                TeleportTo(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - distance));
+                               // player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - distance);
+                            }
+                            else if (leftDoor)
+                            {
+                                TeleportTo(new Vector3(player.transform.position.x - distance, player.transform.position.y, player.transform.position.z));
+                              //  player.transform.position = new Vector3(player.transform.position.x - distance, player.transform.position.y, player.transform.position.z);
+                            }
+                            else if (rightDoor)
+                            {
+                                TeleportTo(new Vector3(player.transform.position.x + distance, player.transform.position.y, player.transform.position.z));
+                               // player.transform.position = new Vector3(player.transform.position.x + distance, player.transform.position.y, player.transform.position.z);
+                            }
         }
-        if (downDoor)
-        {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - distance);
-        }
-        if (leftDoor)
-        {
-            player.transform.position = new Vector3(player.transform.position.x - distance, player.transform.position.y, player.transform.position.z);
-        }
-        if (rightDoor)
-        {
-            player.transform.position = new Vector3(player.transform.position.x + distance, player.transform.position.y, player.transform.position.z);
-        }
+       
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -61,6 +85,9 @@ public class teleport : MonoBehaviour
 
         if (player.gameObject.tag == "Player")
         {
+            
+           
+            
             CheckTeleport();
 
         }

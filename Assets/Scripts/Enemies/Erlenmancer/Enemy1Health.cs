@@ -23,11 +23,17 @@ public class Enemy1Health : MonoBehaviour, IDamageable
     private NavMeshAgent _agent;
     private bool _isDead;
 
+    //agregado por Maximo para el contador de enemigos, borrar o comentar ante cualquier conflicto
+    public GameObject roomManager;
+
     void Awake()
     {
         _currentHealth = maxHealth;
         _animator = GetComponentInChildren<Animator>();
         _agent = GetComponent<NavMeshAgent>();
+
+        //agregado por Maximo para el contador de enemigos, borrar o comentar ante cualquier conflicto
+        roomManager.GetComponent<RoomManager>().numeroDeEnemigos ++;
     }
 
     public void TakeDamage(int amount)
@@ -57,6 +63,10 @@ public class Enemy1Health : MonoBehaviour, IDamageable
             _animator.SetBool(deadBool, true);
         else
             Destroy(gameObject, 0.1f);
+
+
+        //agregado por Maximo para el contador de enemigos, borrar o comentar ante cualquier conflicto
+        roomManager.GetComponent<RoomManager>().numeroDeEnemigos--;
     }
 
     // Llamar desde un Animation Event al final del clip de muerte
