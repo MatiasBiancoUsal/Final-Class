@@ -5042,10 +5042,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3719724690134668865, guid: 4efa802955cc8bc459fce99b431821cd, type: 3}
+      propertyPath: m_Color.b
+      value: 0.063548185
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719724690134668865, guid: 4efa802955cc8bc459fce99b431821cd, type: 3}
+      propertyPath: m_Color.g
+      value: 0.23018861
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719724690134668865, guid: 4efa802955cc8bc459fce99b431821cd, type: 3}
+      propertyPath: m_Color.r
+      value: 0.02736203
+      objectReference: {fileID: 0}
     - target: {fileID: 3984176684701509984, guid: 4efa802955cc8bc459fce99b431821cd, type: 3}
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 5389511329502529441, guid: 4efa802955cc8bc459fce99b431821cd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f27c62f8eac9a6442b9e20f13dc965dc, type: 3}
     - target: {fileID: 6094836256080036999, guid: 4efa802955cc8bc459fce99b431821cd, type: 3}
       propertyPath: m_Pivot.x
       value: 0
