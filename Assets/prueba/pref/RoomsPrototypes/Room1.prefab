@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3107640444485461246}
   - component: {fileID: 1012619330709987394}
   - component: {fileID: 2653265721632546285}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 3755577695899389420}
   - component: {fileID: 7159834751740084137}
   - component: {fileID: 8385519495372387079}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -931,7 +931,7 @@ GameObject:
   - component: {fileID: 6904681499000744583}
   - component: {fileID: 7362140317955438848}
   - component: {fileID: 3104701172052846643}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: f2e6c66209801ad4ebb92c112c3d5225, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 6b9380fc50f84b74bbf57a7f98f35e50, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &9200750018831581839
 GameObject:
@@ -1371,7 +1371,7 @@ GameObject:
   - component: {fileID: 5220875674368835896}
   - component: {fileID: 3162889920284744085}
   - component: {fileID: 1771140950333664036}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wall4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
