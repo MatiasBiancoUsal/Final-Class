@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public class BookOrderChecker : MonoBehaviour
 {
@@ -11,11 +11,13 @@ public class BookOrderChecker : MonoBehaviour
 
     // agregado: cierre y notificación
     public GameObject minigameRoot;
+    public Button verifyButton;
     public event Action<bool> onFinished;
 
     void Awake()
     {
         if (minigameRoot == null) minigameRoot = gameObject;
+        if (verifyButton != null) verifyButton.onClick.AddListener(CheckOrder);
     }
 
     public void CheckOrder()
@@ -51,6 +53,11 @@ public class BookOrderChecker : MonoBehaviour
     public void Close(bool win)
     {
         if (minigameRoot != null) minigameRoot.SetActive(false);
+
+        // Ocultar mouse y bloquear de nuevo
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         onFinished?.Invoke(win);
     }
 }
