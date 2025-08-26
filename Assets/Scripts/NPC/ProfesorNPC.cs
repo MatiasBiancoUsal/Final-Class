@@ -28,7 +28,13 @@ public class ProfesorNPC : MonoBehaviour
         {
             var refPos = player != null ? player.position : (Camera.main != null ? Camera.main.transform.position : transform.position);
             if (Vector3.Distance(transform.position, refPos) < interactDistance)
+            {
                 minigameUI.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+                
+            }
+            
+                
         }
     }
 
