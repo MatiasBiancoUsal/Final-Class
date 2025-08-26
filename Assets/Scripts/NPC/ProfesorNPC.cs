@@ -33,7 +33,7 @@ public class ProfesorNPC : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 
             }
-            
+           
                 
         }
     }
