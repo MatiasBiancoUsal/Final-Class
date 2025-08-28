@@ -843,7 +843,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Tecla O/P para activar nerf/buff
+  m_text: 'Tecla O/P/I para activar nerf/buff
 
 
 '
