@@ -184,7 +184,7 @@ public class EnemyChase : MonoBehaviour
         var rb = proj.GetComponent<Rigidbody>() ?? proj.AddComponent<Rigidbody>();
         rb.useGravity = false;
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-        rb.velocity = proj.transform.forward * projectileSpeed;
+        rb.linearVelocity = proj.transform.forward * projectileSpeed;
         if (proj.TryGetComponent<Collider>(out var c))
             foreach (var col in GetComponentsInChildren<Collider>())
                 Physics.IgnoreCollision(c, col);
