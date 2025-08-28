@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3665166883444500463}
   - component: {fileID: 57896853680154416}
   - component: {fileID: 407129561642197510}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: EnemyProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,6 +63,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -149,9 +150,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  aoeRadius: 1.2
+  aoeRadius: 0.45
   playerMask:
     serializedVersion: 2
     m_Bits: 128
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 512
   explosionVFX: {fileID: 0}
   lifetime: 5
+  friendlyGrace: 0.25
+  team: 0

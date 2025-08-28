@@ -4,61 +4,116 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
-    [Header("Da�o")]
-    [Tooltip("Da�o �nico que hace (se aplica UNA vez).")]
+    public enum Team { Enemy, Player }   // NUEVO
+
+    [Header("Daño")]
     public int damage = 20;
 
-    [Header("Da�o AOE")]
-    [Tooltip("Radio de explosi�n al impactar")]
+    [Header("Daño AOE")]
     public float aoeRadius = 3f;
-    [Tooltip("Capa(s) del jugador para la AOE")]
+    [Tooltip("A quién daña cuando el proyectil es ENEMIGO")]
     public LayerMask playerMask;
+    [Tooltip("A quién daña cuando el proyectil es ALIADO (tras desvío)")]
+    public LayerMask enemyMask;
 
     [Header("Efectos y vida")]
-    [Tooltip("Prefab de part�culas de explosi�n")]
     public GameObject explosionVFX;
-    [Tooltip("Autodestruye tras X segundos si no choca")]
     public float lifetime = 5f;
 
+    [Header("Colisión")]
+    [Tooltip("Tiempo de gracia tras volverse aliado, sin colisionar con el Player")]
+    public float friendlyGrace = 0.5f;
+
     bool _exploded = false;
+    public Team team = Team.Enemy;     // NUEVO
+    float _noPlayerCollisionsUntil = 0f;
+
+    Collider _col;
+    Rigidbody _rb;
+
+    void Awake()
+    {
+        TryGetComponent(out _col);
+        TryGetComponent(out _rb);
+    }
 
     void Start() => Destroy(gameObject, lifetime);
 
     void OnCollisionEnter(Collision col)
     {
         if (_exploded) return;
-        _exploded = true;
 
+        // 1) Si es aliado, ignorar colisiones con el Player durante y después del grace
+        if (team == Team.Player)
+        {
+            // Ignorá si el choque es con el Player o algo bajo su root
+            if (col.collider.CompareTag("Player") || col.transform.root.CompareTag("Player"))
+                return;
+
+            // Si todavía estamos en la ventana de gracia, ignorar cualquier colisión con Player
+            if (Time.time < _noPlayerCollisionsUntil) return;
+        }
+
+        _exploded = true;
         Explode();
+    }
+
+    public void Redirect(Vector3 newDirection, float speed)
+    {
+        if (_rb == null) return;
+
+        // 2) Volverse ALIADO
+        team = Team.Player;
+
+        // Dirección + velocidad
+        Vector3 dir = newDirection.normalized;
+        _rb.linearVelocity = dir * speed;     // si usás rb.velocity, reemplazá aquí
+        transform.forward = dir;
+
+        // 3) Opcionalmente cambiar Tag/Layer (crealos en el proyecto)
+        gameObject.tag = "PlayerProjectile"; // si creás el Tag
+        int lp = LayerMask.NameToLayer("PlayerProjectile");
+        if (lp >= 0) gameObject.layer = lp;
+
+        // 4) Ignorar colisiones con el Player (todas sus colliders)
+        var playerGO = GameObject.FindWithTag("Player");
+        if (playerGO != null && _col != null)
+        {
+            foreach (var pc in playerGO.GetComponentsInChildren<Collider>())
+                Physics.IgnoreCollision(_col, pc, true);
+        }
+
+        // 5) Empujarlo un toque hacia adelante para salir de la cápsula del Player
+        transform.position += dir * 0.25f;
+
+        // 6) Ventana de gracia para asegurar que no registra colisión con el Player
+        _noPlayerCollisionsUntil = Time.time + friendlyGrace;
+
+        // (Opcional) Cambiar color/material para feedback visual de “aliado”
+        // GetComponentInChildren<MeshRenderer>()?.material.SetColor("_EmissionColor", Color.cyan);
     }
 
     private void Explode()
     {
-        // 1) Desactivar collider para que no vuelva a colisionar
-        if (TryGetComponent<Collider>(out var col))
-            col.enabled = false;
+        if (_col) _col.enabled = false;
+        if (_rb != null) _rb.linearVelocity = Vector3.zero;
 
-        // 2) Anular cualquier velocidad restante
-        if (TryGetComponent<Rigidbody>(out var rb))
-            rb.linearVelocity = Vector3.zero;
-
-        // 3) VFX
         if (explosionVFX != null)
             Instantiate(explosionVFX, transform.position, Quaternion.identity);
 
-        // 4) Da�o AOE
-        Collider[] hits = Physics.OverlapSphere(transform.position, aoeRadius, playerMask);
-        foreach (var h in hits)
-            h.GetComponentInParent<PlayerHealth>()?.TakeDamage(damage);
+        // 7) AOE: si es aliado daña ENEMIGOS; si es enemigo daña al PLAYER
+        LayerMask mask = (team == Team.Player) ? enemyMask : playerMask;
 
-        // 5) Destruye r�pido (pero deja tiempo al VFX)
+        Collider[] hits = Physics.OverlapSphere(transform.position, aoeRadius, mask);
+        foreach (var h in hits)
+            h.GetComponentInParent<IDamageable>()?.TakeDamage(damage);
+
         Destroy(gameObject, 0.1f);
     }
 
-
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = (team == Team.Player) ? Color.green : Color.red;
         Gizmos.DrawWireSphere(transform.position, aoeRadius);
     }
 }
