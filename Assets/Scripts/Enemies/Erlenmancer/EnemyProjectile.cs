@@ -4,21 +4,17 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
-<<<<<<< HEAD
+
     [Header("Da�o")]
     [Tooltip("Da�o �nico que hace (se aplica UNA vez).")]
     public int damage = 20;
 
-    [Header("Da�o AOE")]
     [Tooltip("Radio de explosi�n al impactar")]
-=======
+
     public enum Team { Enemy, Player }   // NUEVO
 
-    [Header("Daño")]
-    public int damage = 20;
-
     [Header("Daño AOE")]
->>>>>>> c7f548e3bbafbba9bc3c32cde37cee52954893dc
+
     public float aoeRadius = 3f;
     [Tooltip("A quién daña cuando el proyectil es ENEMIGO")]
     public LayerMask playerMask;
@@ -26,10 +22,9 @@ public class EnemyProjectile : MonoBehaviour
     public LayerMask enemyMask;
 
     [Header("Efectos y vida")]
-<<<<<<< HEAD
+
     [Tooltip("Prefab de part�culas de explosi�n")]
-=======
->>>>>>> c7f548e3bbafbba9bc3c32cde37cee52954893dc
+
     public GameObject explosionVFX;
     public float lifetime = 5f;
 
@@ -111,7 +106,7 @@ public class EnemyProjectile : MonoBehaviour
         if (_col) _col.enabled = false;
         if (_rb != null) _rb.linearVelocity = Vector3.zero;
 
-<<<<<<< HEAD
+
         // 2) Anular cualquier velocidad restante
         if (TryGetComponent<Rigidbody>(out var rb))
             rb.linearVelocity = Vector3.zero;
@@ -126,18 +121,18 @@ public class EnemyProjectile : MonoBehaviour
             h.GetComponentInParent<PlayerHealth>()?.TakeDamage(damage);
 
         // 5) Destruye r�pido (pero deja tiempo al VFX)
-=======
+
         if (explosionVFX != null)
             Instantiate(explosionVFX, transform.position, Quaternion.identity);
 
         // 7) AOE: si es aliado daña ENEMIGOS; si es enemigo daña al PLAYER
         LayerMask mask = (team == Team.Player) ? enemyMask : playerMask;
 
-        Collider[] hits = Physics.OverlapSphere(transform.position, aoeRadius, mask);
-        foreach (var h in hits)
-            h.GetComponentInParent<IDamageable>()?.TakeDamage(damage);
+        //Collider[] hits = Physics.OverlapSphere(transform.position, aoeRadius, mask);
+        //foreach (var h in hits)
+        //    h.GetComponentInParent<IDamageable>()?.TakeDamage(damage);
 
->>>>>>> c7f548e3bbafbba9bc3c32cde37cee52954893dc
+
         Destroy(gameObject, 0.1f);
     }
 
