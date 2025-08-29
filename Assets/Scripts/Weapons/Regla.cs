@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-/// <summary>Arma básica de ejemplo: golpe cuerpo a cuerpo.</summary>
-public class FirstWeapon : WeaponBase
+public class Regla : WeaponBase
 {
     [Header("Daño cuerpo a cuerpo")]
     public int damage = 10;
@@ -17,19 +15,18 @@ public class FirstWeapon : WeaponBase
     }
 
     // Se llama desde TryShoot de WeaponBase a través del Animator
-    public void DealDamage()
+    public void DealDamage()                  // pon un Animation Event aquí
     {
         var hits = Physics.SphereCastAll(
             origin: transform.position,
             radius: 0.5f,
             direction: transform.forward,
             maxDistance: range,
-            layerMask: enemyMask // <-- incluir también el layer de los proyectiles
-        );
+            layerMask: enemyMask);
 
         foreach (var h in hits)
         {
-            // 1) daño a enemigos
+            // Si es enemigo: daño normal
             var dmg = h.transform.GetComponent<IDamageable>();
             if (dmg != null)
             {
@@ -37,17 +34,16 @@ public class FirstWeapon : WeaponBase
                 continue;
             }
 
-            // 2) desviar proyectiles enemigos
+            // Si es un proyectil enemigo: redirigirlo
             var proj = h.transform.GetComponent<EnemyProjectile>();
             if (proj != null)
             {
                 var rb = h.transform.GetComponent<Rigidbody>();
-                float speed = (rb != null) ? rb.linearVelocity.magnitude : 15f;
+                float speed = rb != null ? rb.linearVelocity.magnitude : 15f;
+                Vector3 dir = Camera.main.transform.forward;
 
-                Vector3 dir = Camera.main.transform.forward;  // misma dirección de la cámara
                 proj.Redirect(dir, speed);
             }
         }
     }
-
 }
