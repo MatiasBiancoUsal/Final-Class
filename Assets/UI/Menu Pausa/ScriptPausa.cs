@@ -56,4 +56,11 @@ public class ScriptPausa : MonoBehaviour
         if (Jugador) Destroy(Jugador);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void VolverInicio()
+    {
+        Time.timeScale = 1f; // safety
+        if (Jugador) Destroy(Jugador);
+        SceneManager.LoadScene("Prueba Menú");
+    }
 }
