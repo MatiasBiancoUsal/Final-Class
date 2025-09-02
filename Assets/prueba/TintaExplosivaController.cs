@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 
 public class TintaExplosivaController : MonoBehaviour
 {
     public Image tintaExplosivaImage;
-
     private bool isActive = false;
 
     void Update()

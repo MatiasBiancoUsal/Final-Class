@@ -12,7 +12,8 @@ public class ProfesorNPC : MonoBehaviour
     public Transform player;
 
     BookOrderChecker checker;
-    bool minigameCompleted = false;
+    bool minigameCompleted = false; 
+    bool isPlaying = false;         
 
     void Awake()
     {
@@ -22,7 +23,6 @@ public class ProfesorNPC : MonoBehaviour
         if (minigameUI != null)
         {
             checker = minigameUI.GetComponentInChildren<BookOrderChecker>();
-
             minigameUI.SetActive(false);
 
             if (checker != null)
@@ -64,6 +64,9 @@ public class ProfesorNPC : MonoBehaviour
 
     void OpenMinigame()
     {
+        if (minigameCompleted || isPlaying) return;
+
+        isPlaying = true;
         minigameUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -72,6 +75,7 @@ public class ProfesorNPC : MonoBehaviour
     void OnMinigameFinished(bool win)
     {
         minigameCompleted = true; 
+        isPlaying = false;        
         Debug.Log("Minijuego terminado, acceso bloqueado.");
     }
 }
