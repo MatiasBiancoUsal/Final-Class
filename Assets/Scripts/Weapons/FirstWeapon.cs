@@ -42,7 +42,7 @@ public class FirstWeapon : WeaponBase
             if (proj != null)
             {
                 var rb = h.transform.GetComponent<Rigidbody>();
-                float speed = (rb != null) ? rb.linearVelocity.magnitude : 15f;
+                float speed = (rb != null) ? rb.velocity.magnitude : 15f;
 
                 Vector3 dir = Camera.main.transform.forward;  // misma dirección de la cámara
                 proj.Redirect(dir, speed);

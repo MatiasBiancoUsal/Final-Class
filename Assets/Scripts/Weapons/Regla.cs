@@ -39,7 +39,7 @@ public class Regla : WeaponBase
             if (proj != null)
             {
                 var rb = h.transform.GetComponent<Rigidbody>();
-                float speed = rb != null ? rb.linearVelocity.magnitude : 15f;
+                float speed = rb != null ? rb.velocity.magnitude : 15f;
                 Vector3 dir = Camera.main.transform.forward;
 
                 proj.Redirect(dir, speed);

@@ -63,7 +63,7 @@ public class FeatherGun : WeaponBase
         else
         {
             var rb = go.GetComponent<Rigidbody>();
-            if (rb) { rb.useGravity = false; rb.linearVelocity = go.transform.forward * 24f; }
+            if (rb) { rb.useGravity = false; rb.velocity = go.transform.forward * 24f; }
         }
     }
 }
