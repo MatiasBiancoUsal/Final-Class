@@ -7,15 +7,15 @@ using UnityEngine.AI;
 public class Enemy1Health : MonoBehaviour, IDamageable
 {
     [Header("Vida")]
-    [Tooltip("Vida máxima del enemigo")]
+    [Tooltip("Vida mï¿½xima del enemigo")]
     [SerializeField] private int maxHealth = 100;
     private int _currentHealth;
 
-    [Header("Popup de daño")]
+    [Header("Popup de daï¿½o")]
     [Tooltip("Prefab de DamagePopup (el que usa DamagePopup.Create)")]
     [SerializeField] private DamagePopup damagePopupPrefab;
 
-    [Header("Animación de muerte")]
+    [Header("Animaciï¿½n de muerte")]
     [Tooltip("Nombre del booleano IsDead en el Animator")]
     [SerializeField] private string deadBool = "IsDead";
 
@@ -42,12 +42,14 @@ public class Enemy1Health : MonoBehaviour, IDamageable
 
         _currentHealth -= amount;
 
-        // Muestra el popup en posición aleatoria, siguiendo al enemigo
+        // Muestra el popup en posiciï¿½n aleatoria, siguiendo al enemigo
         if (damagePopupPrefab != null)
             DamagePopup.Create(damagePopupPrefab, transform, amount);
 
         if (_currentHealth <= 0)
             Die();
+        Debug.Log($"ENEMY1 amount={amount}");
+
     }
 
     private void Die()
@@ -58,7 +60,7 @@ public class Enemy1Health : MonoBehaviour, IDamageable
         var cols = GetComponentsInChildren<Collider>();
         foreach (var c in cols) c.enabled = false;
 
-        // Lanza la animación de muerte
+        // Lanza la animaciï¿½n de muerte
         if (_animator != null)
             _animator.SetBool(deadBool, true);
         else

@@ -38,6 +38,11 @@ public class FeatherProjectile : MonoBehaviour
 
         // keep orientation stable (prevents tiny torque from changing the next normal)
         _rb.constraints |= RigidbodyConstraints.FreezeRotation;
+
+        // >>> aplicar buff (tecla B) al daño del proyectil al crearse
+        var buff = Object.FindFirstObjectByType<DanioAl50>(FindObjectsInactive.Include);
+        if (buff) damage = Mathf.RoundToInt(damage * buff.Current);
+        // <<< fin cambio
     }
 
     private void Start()
