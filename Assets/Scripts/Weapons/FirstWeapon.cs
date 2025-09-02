@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>Arma b·sica de ejemplo: golpe cuerpo a cuerpo.</summary>
+/// <summary>Arma b√°sica de ejemplo: golpe cuerpo a cuerpo.</summary>
 public class FirstWeapon : WeaponBase
 {
-    [Header("DaÒo cuerpo a cuerpo")]
+    [Header("Da√±o cuerpo a cuerpo")]
     public int damage = 10;
     public float range = 1.2f;
     public LayerMask enemyMask;
@@ -16,7 +16,7 @@ public class FirstWeapon : WeaponBase
         weaponType = WeaponType.FirstWeapon;   // identifica su tipo
     }
 
-    // Se llama desde TryShoot de WeaponBase a travÈs del Animator
+    // Se llama desde TryShoot de WeaponBase a trav√©s del Animator
     public void DealDamage()
     {
         var hits = Physics.SphereCastAll(
@@ -24,30 +24,36 @@ public class FirstWeapon : WeaponBase
             radius: 0.5f,
             direction: transform.forward,
             maxDistance: range,
-            layerMask: enemyMask // <-- incluir tambiÈn el layer de los proyectiles
+            layerMask: enemyMask // <-- incluir tambi√©n el layer de los proyectiles
         );
 
         foreach (var h in hits)
         {
-            // 1) daÒo a enemigos
+            // 1) da√±o a enemigos
             var dmg = h.transform.GetComponent<IDamageable>();
             if (dmg != null)
             {
-                dmg.TakeDamage(damage);
-                continue;
+                // >> aplicar +50% si el buff DanioAl50 est√° activo
+                var buff = Object.FindFirstObjectByType<DanioAl50>(FindObjectsInactive.Include);
+                int finalDamage = damage;
+                if (buff) finalDamage = Mathf.RoundToInt(finalDamage * buff.Current);
+
+                dmg.TakeDamage(finalDamage);
+                Debug.Log($"MELEE finalDamage={finalDamage}");
             }
-
-            // 2) desviar proyectiles enemigos
-            var proj = h.transform.GetComponent<EnemyProjectile>();
-            if (proj != null)
+            else
             {
-                var rb = h.transform.GetComponent<Rigidbody>();
-                float speed = (rb != null) ? rb.linearVelocity.magnitude : 15f;
+                // 2) desviar proyectiles enemigos
+                var proj = h.transform.GetComponent<EnemyProjectile>();
+                if (proj != null)
+                {
+                    var rb = h.transform.GetComponent<Rigidbody>();
+                    float speed = (rb != null) ? rb.velocity.magnitude : 15f;
 
-                Vector3 dir = Camera.main.transform.forward;  // misma direcciÛn de la c·mara
-                proj.Redirect(dir, speed);
+                    Vector3 dir = Camera.main.transform.forward;  // misma direcci√≥n de la c√°mara
+                    proj.Redirect(dir, speed);
+                }
             }
         }
     }
-
 }

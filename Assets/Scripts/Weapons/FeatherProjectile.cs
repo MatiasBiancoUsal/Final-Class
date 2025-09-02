@@ -32,30 +32,35 @@ public class FeatherProjectile : MonoBehaviour
         _selfCol = GetComponent<Collider>();
 
         _rb.useGravity = false;
-        _rb.linearDamping = 0f;
-        _rb.angularDamping = 0f;
+        _rb.drag = 0f;
+        _rb.angularDrag = 0f;
         _rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
         // keep orientation stable (prevents tiny torque from changing the next normal)
         _rb.constraints |= RigidbodyConstraints.FreezeRotation;
+
+        // >>> aplicar buff (tecla B) al daño del proyectil al crearse
+        var buff = Object.FindFirstObjectByType<DanioAl50>(FindObjectsInactive.Include);
+        if (buff) damage = Mathf.RoundToInt(damage * buff.Current);
+        // <<< fin cambio
     }
 
     private void Start()
     {
-        _rb.linearVelocity = transform.forward * speed;
-        _lastVelocity = _rb.linearVelocity;
+        _rb.velocity = transform.forward * speed;
+        _lastVelocity = _rb.velocity;
         Destroy(gameObject, lifeTime);
         // Debug.Log("[Projectile] FeatherProjectile active");
     }
 
     private void FixedUpdate()
     {
-        if (_rb.linearVelocity.sqrMagnitude > 0.0001f)
-            _lastVelocity = _rb.linearVelocity;
+        if (_rb.velocity.sqrMagnitude > 0.0001f)
+            _lastVelocity = _rb.velocity;
 
         // keep constant speed
-        if (_rb.linearVelocity.sqrMagnitude > 0.01f)
-            _rb.linearVelocity = _rb.linearVelocity.normalized * speed;
+        if (_rb.velocity.sqrMagnitude > 0.01f)
+            _rb.velocity = _rb.velocity.normalized * speed;
     }
 
     private void OnCollisionEnter(Collision col)
@@ -85,7 +90,7 @@ public class FeatherProjectile : MonoBehaviour
             // move out of the surface using the contact point (robust depenetration)
             transform.position = contact.point + n * 0.05f;
 
-            _rb.linearVelocity = reflected * speed;
+            _rb.velocity = reflected * speed;
             _bounces++;
 
             // ignore this collider for a short window to prevent re-contact "sliding"

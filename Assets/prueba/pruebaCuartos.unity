@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 13
-  m_BakeOnSceneLoad: 0
+  serializedVersion: 12
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -252,12 +252,8 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
-  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
-  m_LightUnit: 1
-  m_LuxAtDistance: 1
-  m_EnableSpotReflector: 1
 --- !u!4 &190176582
 Transform:
   m_ObjectHideFlags: 0
@@ -334,7 +330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &792408847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,7 +556,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1118840190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,7 +647,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5789977296162441021, guid: 17ebac4a6ae02db4185b7726e565bcfe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2064749541}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8209883770031911484, guid: 17ebac4a6ae02db4185b7726e565bcfe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1612694756}
+    - targetCorrespondingSourceObject: {fileID: 8209883770031911484, guid: 17ebac4a6ae02db4185b7726e565bcfe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1612694768}
   m_SourcePrefab: {fileID: 100100000, guid: 17ebac4a6ae02db4185b7726e565bcfe, type: 3}
 --- !u!1 &1252151246
 GameObject:
@@ -715,7 +717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1487436016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1130,6 +1132,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108befea1e2c7e7488bdcfce12ca77cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1612694756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612694725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aaacc530252bf0439dc333414dac9e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplier: 1.5
+  active: 0
+--- !u!114 &1612694768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612694725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9728a59104eb949b99f3b3292d360e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleKey: 110
+  outOfCombatDelay: 10
+  healInterval: 10
+  healAmount: 1
+  isActive: 0
 --- !u!1 &1621894715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,7 +1271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1778274501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1320,7 +1353,6 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1383,7 +1415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c1bfdb39acff74abe0552362f515da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 1, y: 1}
+  size: {x: 4, y: 4}
   startPos: 0
   rooms:
   - room: {fileID: 2914851109004820635, guid: e85ef9fd7380b6849b0d3a67e83690ba, type: 3}

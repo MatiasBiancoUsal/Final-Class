@@ -75,7 +75,7 @@ public class EnemyProjectile : MonoBehaviour
 
         // Dirección + velocidad
         Vector3 dir = newDirection.normalized;
-        _rb.linearVelocity = dir * speed;     // si usás rb.velocity, reemplazá aquí
+        _rb.velocity = dir * speed;     // si usás rb.velocity, reemplazá aquí
         transform.forward = dir;
 
         // 3) Opcionalmente cambiar Tag/Layer (crealos en el proyecto)
@@ -104,12 +104,12 @@ public class EnemyProjectile : MonoBehaviour
     private void Explode()
     {
         if (_col) _col.enabled = false;
-        if (_rb != null) _rb.linearVelocity = Vector3.zero;
+        if (_rb != null) _rb.velocity = Vector3.zero;
 
 
         // 2) Anular cualquier velocidad restante
         if (TryGetComponent<Rigidbody>(out var rb))
-            rb.linearVelocity = Vector3.zero;
+            rb.velocity = Vector3.zero;
 
         // 3) VFX
         if (explosionVFX != null)
