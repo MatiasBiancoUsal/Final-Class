@@ -29,25 +29,25 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             return;
         }
 
-        // Aplicar daño
+        
         _currentHealth = Mathf.Max(_currentHealth - amount, 0);
         UpdateHealthUI();
 
-        // >>> CAMBIO: avisar a la regeneración que hubo daño (reinicia el contador)
+       
         GetComponent<Regeneracion>()?.NotifyDamaged();
-        // <<< FIN CAMBIO
+        
 
         if (_currentHealth <= 0)
             Die();
     }
 
-    // >>> CAMBIO: método que usa la regeneración (SendMessage("Heal", ...))
+    
     public void Heal(int amount)
     {
         _currentHealth = Mathf.Min(_currentHealth + amount, maxHealth);
         UpdateHealthUI();
     }
-    // <<< FIN CAMBIO
+    
 
     private void UpdateHealthUI()
     {
@@ -57,7 +57,18 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        Destroy(gameObject);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    // Revivir con porcentaje configurable si está armado (M) y no usado
+    var revive = GetComponent<RevivirMitad>();
+    if (revive && revive.ConsumeIfArmed())
+    {
+        int hp = Mathf.Max(1, Mathf.RoundToInt(maxHealth * Mathf.Clamp01(revive.revivePercent)));
+        _currentHealth = hp;
+        UpdateHealthUI();
+        Debug.Log($"¡Reviviste con {hp}/{maxHealth} HP!");
+        return; 
+    }
+
+    Destroy(gameObject);
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
