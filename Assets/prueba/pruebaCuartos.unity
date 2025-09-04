@@ -1350,7 +1350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d273d8b7a1bdef49bdc5c90d0a6e68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: 109
+  key: 99
   revivePercent: 0.5
   armed: 0
   used: 0
