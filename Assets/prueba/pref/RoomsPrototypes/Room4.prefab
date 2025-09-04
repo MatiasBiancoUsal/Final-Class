@@ -542,7 +542,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b893ba346570abb48a522f4bba2b2386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: cca482a6382bfe34abca4afc0f82fbfd, type: 2}
   roomManager: {fileID: 3445559894105419022}
   upDoor: 0
   downDoor: 1
@@ -789,7 +788,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b893ba346570abb48a522f4bba2b2386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: cca482a6382bfe34abca4afc0f82fbfd, type: 2}
   roomManager: {fileID: 3445559894105419022}
   upDoor: 0
   downDoor: 0
@@ -915,7 +913,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b893ba346570abb48a522f4bba2b2386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: cca482a6382bfe34abca4afc0f82fbfd, type: 2}
   roomManager: {fileID: 3445559894105419022}
   upDoor: 0
   downDoor: 0
@@ -1216,7 +1213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b893ba346570abb48a522f4bba2b2386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: cca482a6382bfe34abca4afc0f82fbfd, type: 2}
   roomManager: {fileID: 3445559894105419022}
   upDoor: 1
   downDoor: 0
