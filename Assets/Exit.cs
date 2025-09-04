@@ -6,11 +6,14 @@ using UnityEngine.SceneManagement;
 public class Exit : MonoBehaviour
 {
 
-
+    int currentSceneIndex;
     public GameObject roomManager;
     GameObject player;
 
-
+    private void Start()
+    {
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,7 +22,7 @@ public class Exit : MonoBehaviour
         if (player.gameObject.tag == "Player" && roomManager.GetComponent<RoomManager>().cuartoCompletado)
         {
 
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(currentSceneIndex ++);
 
 
 
