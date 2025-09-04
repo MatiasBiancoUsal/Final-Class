@@ -21,21 +21,33 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(int amount)
     {
-        // Si el escudo está activo, bloquea el daño
+        // Escudo: bloquea daño
         if (_playerShield != null && _playerShield.IsShieldActive())
         {
             Debug.Log("¡Daño bloqueado por el ESCUDO desde PlayerHealth!");
-            _playerShield.ConsumeShield(); // Desactiva y pone en cooldown
-            return; // no se baja la vida
+            _playerShield.ConsumeShield();
+            return;
         }
 
-        // Si no hay escudo, se aplica daño normalmente
+        
         _currentHealth = Mathf.Max(_currentHealth - amount, 0);
         UpdateHealthUI();
+
+       
+        GetComponent<Regeneracion>()?.NotifyDamaged();
+        
 
         if (_currentHealth <= 0)
             Die();
     }
+
+    
+    public void Heal(int amount)
+    {
+        _currentHealth = Mathf.Min(_currentHealth + amount, maxHealth);
+        UpdateHealthUI();
+    }
+    
 
     private void UpdateHealthUI()
     {
@@ -45,7 +57,18 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        Destroy(gameObject);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    // Revivir con porcentaje configurable si está armado (M) y no usado
+    var revive = GetComponent<RevivirMitad>();
+    if (revive && revive.ConsumeIfArmed())
+    {
+        int hp = Mathf.Max(1, Mathf.RoundToInt(maxHealth * Mathf.Clamp01(revive.revivePercent)));
+        _currentHealth = hp;
+        UpdateHealthUI();
+        Debug.Log($"¡Reviviste con {hp}/{maxHealth} HP!");
+        return; 
+    }
+
+    Destroy(gameObject);
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class Regla : WeaponBase
 {
-    [Header("DaÒo cuerpo a cuerpo")]
+    [Header("Da√±o cuerpo a cuerpo")]
     public int damage = 10;
     public float range = 1.2f;
     public LayerMask enemyMask;
@@ -14,8 +15,8 @@ public class Regla : WeaponBase
         weaponType = WeaponType.FirstWeapon;   // identifica su tipo
     }
 
-    // Se llama desde TryShoot de WeaponBase a travÈs del Animator
-    public void DealDamage()                  // pon un Animation Event aquÌ
+    // Se llama desde TryShoot de WeaponBase a trav√©s del Animator
+    public void DealDamage()                  // pon un Animation Event aqu√≠
     {
         var hits = Physics.SphereCastAll(
             origin: transform.position,
@@ -26,11 +27,15 @@ public class Regla : WeaponBase
 
         foreach (var h in hits)
         {
-            // Si es enemigo: daÒo normal
+            // Si es enemigo: da√±o (aplica +50% si DanioAl50 est√° activo)
             var dmg = h.transform.GetComponent<IDamageable>();
             if (dmg != null)
             {
-                dmg.TakeDamage(damage);
+                var buff = Object.FindFirstObjectByType<DanioAl50>(FindObjectsInactive.Include);
+                int finalDamage = damage;
+                if (buff) finalDamage = Mathf.RoundToInt(finalDamage * buff.Current);
+
+                dmg.TakeDamage(finalDamage);
                 continue;
             }
 
