@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class teleport : MonoBehaviour
 {
-    public Material material;
+    
 
-     float distance = 50f;
+     float distance = 26f;
 
     public GameObject roomManager;
     
