@@ -5,16 +5,23 @@ public class UnaVida : MonoBehaviour
     [Tooltip("Referencia al script PlayerHealth del jugador")]
     public PlayerHealth playerHealth;
 
-    [Tooltip("Vida inicial del jugador")]
-    public int vidaInicial = 20;
-
     void Start()
     {
         if (playerHealth != null)
         {
-            // Recibe daño 
-            playerHealth.TakeDamage(playerHealth.maxHealth - vidaInicial);
+            // Restaurar vida completa primero
+            playerHealth.Heal(playerHealth.maxHealth);
+
+            int vidaAUsar = playerHealth.maxHealth;
+
+            // Si el desafío "OdioLosLunes" está activo, aplicar nerf del 90% - 
+            if (DesafioManager.Instance.GetDesafio("OdioLosLunes"))
+            {
+                vidaAUsar = Mathf.Max(1, Mathf.RoundToInt(playerHealth.maxHealth * 0.1f)); // queda con el 10% de la vida
+            }
+
+            // Ajustar la vida actual usando TakeDamage
+            playerHealth.TakeDamage(playerHealth.maxHealth - vidaAUsar);
         }
     }
 }
-

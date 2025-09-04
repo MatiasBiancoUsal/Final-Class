@@ -119,6 +119,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &7883538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7883540}
+  - component: {fileID: 7883539}
+  m_Layer: 0
+  m_Name: DontDestroyOnLoad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &7883539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7883538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3229acb42ee9b3041b1df045658a4f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &7883540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7883538}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -596.9386, y: 154.52614, z: 13.936109}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &21651472
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +174,7 @@ GameObject:
   - component: {fileID: 21651473}
   - component: {fileID: 21651474}
   m_Layer: 5
-  m_Name: Toggle (1)
+  m_Name: Maestro Estricto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2115,6 +2159,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339362974}
   m_CullTransparentMesh: 1
+--- !u!1 &473860530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 473860532}
+  - component: {fileID: 473860531}
+  m_Layer: 0
+  m_Name: DesafioUIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &473860531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473860530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 405215d02ceabe946b6eee92920d8897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recreoCanceladoToggle: {fileID: 1883826596}
+  maestroEstrictoToggle: {fileID: 21651474}
+  clasesNocturnasToggle: {fileID: 1173023926}
+  tintaExplosivaToggle: {fileID: 2067646914}
+  odioLosLunesToggle: {fileID: 657484063}
+  aprobadoCon10Toggle: {fileID: 691072177}
+  apuntesCompletosToggle: {fileID: 1129701485}
+  meriendaExtraToggle: {fileID: 774646748}
+  comodinEscolarToggle: {fileID: 1072798581}
+--- !u!4 &473860532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473860530}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1449.1, y: 176.24966, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &548452461
 GameObject:
   m_ObjectHideFlags: 0
@@ -2623,7 +2720,7 @@ GameObject:
   - component: {fileID: 657484062}
   - component: {fileID: 657484063}
   m_Layer: 5
-  m_Name: Toggle (1)
+  m_Name: Odio Los Lunes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2859,7 +2956,7 @@ GameObject:
   - component: {fileID: 691072176}
   - component: {fileID: 691072177}
   m_Layer: 5
-  m_Name: Toggle (1)
+  m_Name: Aprobado Con 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3158,7 +3255,7 @@ GameObject:
   - component: {fileID: 774646747}
   - component: {fileID: 774646748}
   m_Layer: 5
-  m_Name: Toggle (1)
+  m_Name: Merienda Extra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4397,7 +4494,7 @@ GameObject:
   - component: {fileID: 1072798580}
   - component: {fileID: 1072798581}
   m_Layer: 5
-  m_Name: Toggle (1)
+  m_Name: Comodin Escolar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4482,7 +4579,7 @@ GameObject:
   - component: {fileID: 1129701484}
   - component: {fileID: 1129701485}
   m_Layer: 5
-  m_Name: Toggle (1)
+  m_Name: Apuntes Completos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4855,7 +4952,7 @@ GameObject:
   - component: {fileID: 1173023925}
   - component: {fileID: 1173023926}
   m_Layer: 5
-  m_Name: Toggle (1)
+  m_Name: Clases Nocturnas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7672,7 +7769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4, y: 0}
+  m_AnchoredPosition: {x: -0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1829777271
@@ -7998,7 +8095,7 @@ GameObject:
   - component: {fileID: 1883826595}
   - component: {fileID: 1883826596}
   m_Layer: 5
-  m_Name: Toggle (1)
+  m_Name: Recreo Cancelado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8954,7 +9051,7 @@ GameObject:
   - component: {fileID: 2067646913}
   - component: {fileID: 2067646914}
   m_Layer: 5
-  m_Name: Toggle (1)
+  m_Name: Tinta Explosiva
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9390,3 +9487,5 @@ SceneRoots:
   - {fileID: 852643317}
   - {fileID: 1061831352}
   - {fileID: 1466981506}
+  - {fileID: 7883540}
+  - {fileID: 473860532}
