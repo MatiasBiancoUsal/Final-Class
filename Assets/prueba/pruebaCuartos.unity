@@ -494,11 +494,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &901070188 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3319973401241075568, guid: e61211e8c38085049af02f47324f6884, type: 3}
-  m_PrefabInstance: {fileID: 1528258557}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &943632771 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8822096198811320484, guid: e61211e8c38085049af02f47324f6884, type: 3}
@@ -1657,8 +1652,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minimapCamera: {fileID: 869581885}
-  minimapaChico: {fileID: 901070188}
-  minimapaGrande: {fileID: 802964000}
+  minimapaChico: {fileID: 1528258559}
+  minimapaGrande: {fileID: 1528258558}
   altKey: 290
   fullOrthoSize: 120
 --- !u!114 &2104944722
