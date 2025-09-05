@@ -21,12 +21,13 @@ public class DungeonGenerator : MonoBehaviour
     public int startPos = 0;
     public Rule[] rooms;
     public Vector2 offset;
-    public GameObject player; // 👈 el jugador ya está en la escena
+    private GameObject player; // 👈 el jugador ya está en la escena
 
     List<Cell> board;
 
     void Start()
     {
+       
         MazeGenerator();
     }
 
@@ -130,6 +131,15 @@ public class DungeonGenerator : MonoBehaviour
 
     void GenerateDungeon()
     {
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player == null)
+        {
+            Debug.LogError("No se encontró ningún objeto con el tag 'Player' en la escena.");
+            return;
+        }
+
         List<Vector2Int> visitedCells = new List<Vector2Int>();
         for (int i = 0; i < size.x; i++)
         {
@@ -234,7 +244,7 @@ public class DungeonGenerator : MonoBehaviour
         }
 
         // 4. Mover jugador al primer cuarto
-        if (firstRoom != null && player != null)
+        if (firstRoom != null )
         {
             player.transform.position = firstRoom.transform.position + new Vector3(0, 1, 0);
         }
