@@ -15,19 +15,19 @@ public class DungeonGenerator : MonoBehaviour
     {
         public GameObject room;
         public bool obligatory;
+        public bool isFinalRoom; // 👈 marcar en el inspector si este cuarto debe ser el último
     }
 
     public Vector2Int size;
     public int startPos = 0;
     public Rule[] rooms;
     public Vector2 offset;
-    private GameObject player; // 👈 el jugador ya está en la escena
+    private GameObject player; // el player se busca por Tag "Player"
 
     List<Cell> board;
 
     void Start()
     {
-       
         MazeGenerator();
     }
 
@@ -131,6 +131,7 @@ public class DungeonGenerator : MonoBehaviour
 
     void GenerateDungeon()
     {
+        // Buscar al Player automáticamente por su Tag
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player");
 
@@ -152,12 +153,15 @@ public class DungeonGenerator : MonoBehaviour
 
         Shuffle(visitedCells);
 
+        // Separar reglas
         List<Rule> obligatoryRooms = new List<Rule>();
         List<Rule> optionalRooms = new List<Rule>();
+        Rule finalRoomRule = null;
 
         foreach (var rule in rooms)
         {
-            if (rule.obligatory) obligatoryRooms.Add(rule);
+            if (rule.isFinalRoom) finalRoomRule = rule;
+            else if (rule.obligatory) obligatoryRooms.Add(rule);
             else optionalRooms.Add(rule);
         }
 
@@ -172,7 +176,7 @@ public class DungeonGenerator : MonoBehaviour
         RoomBehaviour firstRoom = null;
         RoomBehaviour lastRoom = null;
 
-        // 1. Colocar los cuartos obligatorios
+        // 1. Colocar cuartos obligatorios
         foreach (var room in obligatoryRooms)
         {
             var pos = visitedCells[cellIndex++];
@@ -195,15 +199,13 @@ public class DungeonGenerator : MonoBehaviour
             lastRoom = newRoom;
         }
 
-        // 2. Colocar opcionales
+        // 2. Colocar cuartos opcionales (dejando la última celda libre)
         Shuffle(optionalRooms);
-
-        while (cellIndex < visitedCells.Count)
+        while (cellIndex < visitedCells.Count - 1)
         {
             var pos = visitedCells[cellIndex++];
 
             Rule selectedRoom = null;
-
             foreach (var room in optionalRooms)
             {
                 if (!usedRooms.Contains(room.room))
@@ -237,14 +239,31 @@ public class DungeonGenerator : MonoBehaviour
             lastRoom = newRoom;
         }
 
-        // 3. Activar la escotilla SOLO en el último cuarto
-        if (lastRoom != null)
+        // 3. Colocar el cuarto final en la última celda
+        if (finalRoomRule != null)
         {
-            lastRoom.EnableHatch();
+            var pos = visitedCells[visitedCells.Count - 1];
+            var finalRoom = Instantiate(
+                finalRoomRule.room,
+                new Vector3(pos.x * offset.x, 0, -pos.y * offset.y),
+                Quaternion.identity,
+                transform
+            ).GetComponent<RoomBehaviour>();
+
+            finalRoom.UpdateRoom(board[pos.x + pos.y * size.x].status);
+            finalRoom.name += $" {pos.x}-{pos.y}";
+            finalRoom.EnableHatch(); // activar escotilla en el final
+
+            lastRoom = finalRoom;
+        }
+        else
+        {
+            Debug.LogWarning("No se definió un cuarto final. Se usará el último generado.");
+            if (lastRoom != null) lastRoom.EnableHatch();
         }
 
         // 4. Mover jugador al primer cuarto
-        if (firstRoom != null )
+        if (firstRoom != null && player != null)
         {
             player.transform.position = firstRoom.transform.position + new Vector3(0, 1, 0);
         }
