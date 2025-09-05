@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e74a024021dc964c956a62bf5ac6eb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 15
+  detectionRange: 27
   playerTag: Player
   meleeRange: 4.5
   meleeCooldown: 3
@@ -247,9 +247,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b56422eedcdb27499be6bafb7bf957b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 60
   damagePopupPrefab: {fileID: 2962580587281712407, guid: ffa4ff78c8074d744a72b6f8e4feef24, type: 3}
   deadBool: IsDead
+  roomManager: {fileID: 0}
 --- !u!1 &525567970113188468
 GameObject:
   m_ObjectHideFlags: 0

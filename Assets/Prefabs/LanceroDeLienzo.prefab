@@ -2533,7 +2533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
-  detectionRange: 12.4
+  detectionRange: 27
   obstacleMask:
     serializedVersion: 2
     m_Bits: 256
@@ -2585,13 +2585,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101f98e10323a244ca04f5ea09e21ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
-  defenseReduction: 0.2
+  maxHealth: 100
+  defenseReduction: 0.5
   backstabAngleThreshold: 120
   damagePopupPrefab: {fileID: 2962580587281712407, guid: ffa4ff78c8074d744a72b6f8e4feef24, type: 3}
   deathTrigger: Death
   animator: {fileID: 4891503268110699058}
   ai: {fileID: 4736110972629396722}
+  roomManager: {fileID: 0}
 --- !u!1 &8867323947233679889
 GameObject:
   m_ObjectHideFlags: 0

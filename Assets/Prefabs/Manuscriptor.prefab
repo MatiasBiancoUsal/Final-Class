@@ -1070,13 +1070,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
-  detectionRange: 12.5
+  detectionRange: 27
   obstacleMask:
     serializedVersion: 2
     m_Bits: 256
   meleeRange: 2.66
-  meleeCooldown: 6
-  meleeEndlag: 3
+  meleeCooldown: 3
+  meleeEndlag: 1
   meleeTrigger: Attack
   meleeHitPoint: {fileID: 361746602445313495}
   meleeHitOffset: {x: 0, y: 0.71, z: 0.07}
@@ -1121,12 +1121,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae3a7af39482204c8af8ae2dcc56d92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 60
   damagePopupPrefab: {fileID: 2962580587281712407, guid: ffa4ff78c8074d744a72b6f8e4feef24, type: 3}
   deathTrigger: Death
   animator: {fileID: 3543800237590730758}
   agent: {fileID: 7388789797476419122}
   ai: {fileID: 1031680168551939034}
+  roomManager: {fileID: 0}
 --- !u!1 &5107157582763487152
 GameObject:
   m_ObjectHideFlags: 0
