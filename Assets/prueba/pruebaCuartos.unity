@@ -1341,17 +1341,17 @@ MonoBehaviour:
   size: {x: 4, y: 4}
   startPos: 0
   rooms:
-  - room: {fileID: 2914851109004820635, guid: e85ef9fd7380b6849b0d3a67e83690ba, type: 3}
+  - room: {fileID: 7521750919931777334, guid: 4647fdded7ce322439e41c80647c287a, type: 3}
+    obligatory: 0
+    isFinalRoom: 0
+  - room: {fileID: 7521750919931777334, guid: 9c75ee65b8b2d354e88474cf0587509a, type: 3}
+    obligatory: 0
+    isFinalRoom: 0
+  - room: {fileID: 7521750919931777334, guid: 13f59cd7fc2cacd468b87ea8f874628b, type: 3}
+    obligatory: 0
+    isFinalRoom: 0
+  - room: {fileID: 7521750919931777334, guid: 0f326c59ad313fe4bb73838c4d324c8d, type: 3}
     obligatory: 1
-    isFinalRoom: 0
-  - room: {fileID: 2914851109004820635, guid: eccb96aa118610b4a90b514fefda3d74, type: 3}
-    obligatory: 0
-    isFinalRoom: 0
-  - room: {fileID: 2914851109004820635, guid: 26ab25fbd0c86c64faf2d9dec26a7ad8, type: 3}
-    obligatory: 0
-    isFinalRoom: 0
-  - room: {fileID: 2914851109004820635, guid: 1b7fa36c75eb387469b96c1f1454a51c, type: 3}
-    obligatory: 0
     isFinalRoom: 0
   offset: {x: 90, y: 90}
 --- !u!4 &2098870929
