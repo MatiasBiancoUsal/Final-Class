@@ -119,6 +119,46 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &44227869 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5500716140292011520, guid: 92ec55c3ef93f98428550ef668e15ae8, type: 3}
+  m_PrefabInstance: {fileID: 7766007584462722566}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &44227872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44227869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e74a024021dc964c956a62bf5ac6eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRange: 12
+  playerTag: Player
+  meleeRange: 2
+  meleeCooldown: 1.5
+  meleeTrigger: MeleeAttack
+  meleeDamage: 20
+  meleeHitPoint: {fileID: 0}
+  meleeHitRadius: 1
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  meleeRotationMultiplier: 2
+  rangedMinRange: 6
+  rangedMaxRange: 10
+  rangedCooldown: 2
+  rangedTrigger: RangedAttack
+  projectileSpawnPoint: {fileID: 0}
+  projectilePrefab: {fileID: 8846670784502647145, guid: 045629ce09bc38640b4dfb51781a1880, type: 3}
+  projectileSpeed: 15
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+  rotationSpeed: 5
 --- !u!1 &61749740
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,14 +208,17 @@ MonoBehaviour:
   rooms:
   - room: {fileID: 4665294873750504796, guid: 27be1e6550ca9b8419a4e6bfe3f34f68, type: 3}
     obligatory: 0
+    isFinalRoom: 0
   - room: {fileID: 4665294873750504796, guid: 79133ff4b3fc93149a7b0d0f8e7c0b4e, type: 3}
     obligatory: 0
+    isFinalRoom: 0
   - room: {fileID: 4665294873750504796, guid: 9ff01ddfefd67e040a69d4ed3e49de2f, type: 3}
     obligatory: 0
+    isFinalRoom: 0
   - room: {fileID: 4665294873750504796, guid: 4af07ba82cb1e1445aa4058845cda7c5, type: 3}
     obligatory: 0
+    isFinalRoom: 0
   offset: {x: 10, y: 10}
-  player: {fileID: 0}
 --- !u!1 &190176580
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,73 +317,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 968930632268413485, guid: e61211e8c38085049af02f47324f6884, type: 3}
   m_PrefabInstance: {fileID: 1528258557}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &792408846
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 792408848}
-  - component: {fileID: 792408847}
-  m_Layer: 0
-  m_Name: Projectiles
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &792408847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 792408846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e74a024021dc964c956a62bf5ac6eb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionRange: 12
-  playerTag: Player
-  meleeRange: 2
-  meleeCooldown: 1.5
-  meleeTrigger: MeleeAttack
-  meleeDamage: 20
-  meleeHitPoint: {fileID: 0}
-  meleeHitRadius: 1
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  meleeRotationMultiplier: 2
-  rangedMinRange: 6
-  rangedMaxRange: 10
-  rangedCooldown: 2
-  rangedTrigger: RangedAttack
-  projectileSpawnPoint: {fileID: 0}
-  projectilePrefab: {fileID: 8846670784502647145, guid: 045629ce09bc38640b4dfb51781a1880, type: 3}
-  projectileSpeed: 15
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 0
-  rotationSpeed: 5
---- !u!4 &792408848
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 792408846}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.124683, y: 105.6, z: -77.76452}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &869581883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,14 +1343,17 @@ MonoBehaviour:
   rooms:
   - room: {fileID: 2914851109004820635, guid: e85ef9fd7380b6849b0d3a67e83690ba, type: 3}
     obligatory: 1
+    isFinalRoom: 0
   - room: {fileID: 2914851109004820635, guid: eccb96aa118610b4a90b514fefda3d74, type: 3}
     obligatory: 0
+    isFinalRoom: 0
   - room: {fileID: 2914851109004820635, guid: 26ab25fbd0c86c64faf2d9dec26a7ad8, type: 3}
     obligatory: 0
+    isFinalRoom: 0
   - room: {fileID: 2914851109004820635, guid: 1b7fa36c75eb387469b96c1f1454a51c, type: 3}
     obligatory: 0
+    isFinalRoom: 0
   offset: {x: 90, y: 90}
-  player: {fileID: 1612694725}
 --- !u!4 &2098870929
 Transform:
   m_ObjectHideFlags: 0
@@ -1425,7 +1404,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 0}
-  vidaInicial: 20
 --- !u!1001 &250203768864447939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1791,10 +1769,14 @@ PrefabInstance:
     - target: {fileID: 4310861816165588087, guid: 92ec55c3ef93f98428550ef668e15ae8, type: 3}
       propertyPath: enemyScript
       value: 
-      objectReference: {fileID: 792408847}
+      objectReference: {fileID: 44227872}
     - target: {fileID: 5500716140292011520, guid: 92ec55c3ef93f98428550ef668e15ae8, type: 3}
       propertyPath: m_Name
       value: ProjectileNerf
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500716140292011520, guid: 92ec55c3ef93f98428550ef668e15ae8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6409872059131485779, guid: 92ec55c3ef93f98428550ef668e15ae8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1839,7 +1821,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5500716140292011520, guid: 92ec55c3ef93f98428550ef668e15ae8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 44227872}
   m_SourcePrefab: {fileID: 100100000, guid: 92ec55c3ef93f98428550ef668e15ae8, type: 3}
 --- !u!1001 &7792531758751391733
 PrefabInstance:
@@ -1979,7 +1964,6 @@ SceneRoots:
   - {fileID: 1374554044}
   - {fileID: 7792531758751391733}
   - {fileID: 7766007584462722566}
-  - {fileID: 792408848}
   - {fileID: 2833395601994003894}
   - {fileID: 9208322421605705545}
   - {fileID: 250203768864447939}
