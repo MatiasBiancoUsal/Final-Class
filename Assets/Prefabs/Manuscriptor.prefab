@@ -1079,7 +1079,7 @@ MonoBehaviour:
   meleeEndlag: 1
   meleeTrigger: Attack
   meleeHitPoint: {fileID: 361746602445313495}
-  meleeHitOffset: {x: 0, y: 0.71, z: 0.07}
+  meleeHitOffset: {x: 0, y: 0.71, z: 0}
   meleeHitRadius: 1.44
   playerMask:
     serializedVersion: 2
@@ -1843,7 +1843,7 @@ Transform:
   m_GameObject: {fileID: 8960915570582737591}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0036, z: 0.0094}
+  m_LocalPosition: {x: 0, y: 0.0036, z: 0.0145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
