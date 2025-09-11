@@ -1351,8 +1351,8 @@ MonoBehaviour:
     obligatory: 0
     isFinalRoom: 0
   - room: {fileID: 7521750919931777334, guid: 0f326c59ad313fe4bb73838c4d324c8d, type: 3}
-    obligatory: 1
-    isFinalRoom: 0
+    obligatory: 0
+    isFinalRoom: 1
   offset: {x: 90, y: 90}
 --- !u!4 &2098870929
 Transform:
