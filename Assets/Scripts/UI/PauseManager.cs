@@ -11,6 +11,17 @@ public class PauseManager : MonoBehaviour
             TogglePause();
     }
 
+    private void Awake()
+    {
+        IsPaused = false;
+        Time.timeScale = 1f;
+
+        if (pauseMenuRoot) pauseMenuRoot.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     public void TogglePause()
     {
         IsPaused = !IsPaused;
