@@ -15,7 +15,7 @@ public class DungeonGenerator : MonoBehaviour
     {
         public GameObject room;
         public bool obligatory;
-        public bool isFinalRoom; // 👈 marcar en el inspector si este cuarto debe ser el último
+        public bool isFinalRoom; // marcar en el inspector si este cuarto debe ser el último
     }
 
     public Vector2Int size;
@@ -262,10 +262,18 @@ public class DungeonGenerator : MonoBehaviour
             if (lastRoom != null) lastRoom.EnableHatch();
         }
 
-        // 4. Mover jugador al primer cuarto
+        // 4. Mover jugador al punto PlayerSpawn del primer cuarto
         if (firstRoom != null && player != null)
         {
-            player.transform.position = firstRoom.transform.position + new Vector3(0, 1, 0);
+            Transform spawnPoint = firstRoom.transform.Find("PlayerSpawn");
+            if (spawnPoint != null)
+            {
+                player.transform.position = spawnPoint.position;
+            }
+            else
+            {
+                player.transform.position = firstRoom.transform.position + new Vector3(0, 1, 0);
+            }
         }
     }
 }
