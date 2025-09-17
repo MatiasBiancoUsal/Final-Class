@@ -438,6 +438,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3367862589287666160, guid: 17ebac4a6ae02db4185b7726e565bcfe, type: 3}
+      propertyPath: cooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5789977296162441021, guid: 17ebac4a6ae02db4185b7726e565bcfe, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30.589355
@@ -870,7 +874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1573166610
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1241,7 +1245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2064749541
 Transform:
   m_ObjectHideFlags: 0
@@ -1420,6 +1424,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Odio Los Lunes
       objectReference: {fileID: 0}
+    - target: {fileID: 5311926260260757069, guid: 56ce9e23e2722ef4b94106b2a5a52c86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8353613637115886572, guid: 56ce9e23e2722ef4b94106b2a5a52c86, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1479,7 +1487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2052770017763244904, guid: 35d4b398719a99645b558e4a5479370e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3769368974565036582, guid: 35d4b398719a99645b558e4a5479370e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1582,6 +1590,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ComodinEscolar
       objectReference: {fileID: 0}
+    - target: {fileID: 8958485596014149522, guid: dc60496a4a7e41142bbd4f215e69ac30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1639,6 +1651,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Aprobado10
       objectReference: {fileID: 0}
+    - target: {fileID: 2540673809364968957, guid: c7f996e50458a144f97bf45ce6f0e5ad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1655,6 +1671,10 @@ PrefabInstance:
     - target: {fileID: 2841941393758699753, guid: 89149204aace27c4b890db38c21fc36d, type: 3}
       propertyPath: m_Name
       value: MeriendaExtra
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841941393758699753, guid: 89149204aace27c4b890db38c21fc36d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7043835206639785143, guid: 89149204aace27c4b890db38c21fc36d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1753,6 +1773,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ApuntesCompletos
       objectReference: {fileID: 0}
+    - target: {fileID: 8371999279064503689, guid: 6223d0345a6e77043983bb854a1df169, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1838,6 +1862,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedNerf
       objectReference: {fileID: 0}
+    - target: {fileID: 3972960391764952849, guid: 864bc3a1b5bd4dc4dbab1aaec7e455a8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6400394831063773556, guid: 864bc3a1b5bd4dc4dbab1aaec7e455a8, type: 3}
       propertyPath: playerController
       value: 
@@ -1902,6 +1930,10 @@ PrefabInstance:
     - target: {fileID: 7271178482724953886, guid: 11a8a5e80b73d27469b016f845b675eb, type: 3}
       propertyPath: m_Name
       value: 'Clases Nocturnas '
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271178482724953886, guid: 11a8a5e80b73d27469b016f845b675eb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7704100317091249296, guid: 11a8a5e80b73d27469b016f845b675eb, type: 3}
       propertyPath: m_LocalPosition.x
