@@ -33,6 +33,7 @@ public class MinionHealth : MonoBehaviour, IDamageable
         _currentHealth = maxHealth;
 
         //agregado por Maximo para el contador de enemigos, borrar o comentar ante cualquier conflicto
+        roomManager = GameObject.Find("RoomManagerBoss");
         roomManager.GetComponent<RoomManager>().numeroDeEnemigos++;
     }
 
