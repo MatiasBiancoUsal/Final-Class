@@ -1344,10 +1344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: {x: 4, y: 4}
   startPos: 0
-  rooms:
-  - room: {fileID: 7521750919931777334, guid: 5e77a363c0e8bf541a3cadf677196b9f, type: 3}
-    obligatory: 0
-    isFinalRoom: 0
+  rooms: []
   offset: {x: 90, y: 90}
 --- !u!4 &2098870929
 Transform:
