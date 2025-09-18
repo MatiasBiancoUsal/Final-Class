@@ -69,8 +69,15 @@ public class Boss1AI : MonoBehaviour
     bool _inEndlag;
     float _endlagEndTime;
 
+    // boludeces de max
+    private bool enemyActive = false;
+    Vector3 startpos; 
+
     void Awake()
     {
+        //Max toco esto
+        startpos = this.transform.position;
+
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponentInChildren<Animator>();
         var go = GameObject.FindWithTag(playerTag);
@@ -81,11 +88,18 @@ public class Boss1AI : MonoBehaviour
 
     void Update()
     {
+        //Max toco esto
+        if (startpos != this.transform.position)
+        {
+            enemyActive = true;
+        }
+
         if (_player == null) return;
 
         // -------- INVOCACIÓN (no depende de animación, puede ocurrir aunque esté atacando) --------
-        if (Time.time >= _nextSummonTime)
+        if (Time.time >= _nextSummonTime && enemyActive)
         {
+            Debug.Log("summon");
             SummonMinions();
             _nextSummonTime = Time.time + summonCooldown;
         }
