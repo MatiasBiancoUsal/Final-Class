@@ -6,7 +6,7 @@ public class teleport : MonoBehaviour
 {
     
 
-     float distance = 26f;
+     float distance = 65f;
 
     public GameObject roomManager;
     
