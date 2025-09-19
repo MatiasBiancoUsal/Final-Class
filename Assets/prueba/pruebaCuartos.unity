@@ -440,7 +440,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3367862589287666160, guid: 17ebac4a6ae02db4185b7726e565bcfe, type: 3}
       propertyPath: cooldown
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5789977296162441021, guid: 17ebac4a6ae02db4185b7726e565bcfe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1346,26 +1346,17 @@ MonoBehaviour:
   startPos: 0
   rooms:
   - room: {fileID: 7521750919931777334, guid: bfe23b23dcf946247bc2443352e6a78b, type: 3}
-    obligatory: 1
-    isFinalRoom: 0
-  - room: {fileID: 7521750919931777334, guid: 76167a1ce9183aa4baa26863230f5b2c, type: 3}
     obligatory: 0
     isFinalRoom: 0
   - room: {fileID: 7521750919931777334, guid: 5e77a363c0e8bf541a3cadf677196b9f, type: 3}
     obligatory: 0
     isFinalRoom: 0
-  - room: {fileID: 7521750919931777334, guid: a591a809bd98fbe4ebff263e25f86619, type: 3}
+  - room: {fileID: 7521750919931777334, guid: 3dd452a266827d142a360555d22a094b, type: 3}
     obligatory: 0
     isFinalRoom: 0
-  - room: {fileID: 7521750919931777334, guid: 3ae789242d7355b4e91eea5a8a09ec50, type: 3}
+  - room: {fileID: 7521750919931777334, guid: 76167a1ce9183aa4baa26863230f5b2c, type: 3}
     obligatory: 0
     isFinalRoom: 0
-  - room: {fileID: 7521750919931777334, guid: becebeb8057e2b64a99d4386912f2733, type: 3}
-    obligatory: 0
-    isFinalRoom: 0
-  - room: {fileID: 7521750919931777334, guid: 2e91909f5e3cb1749a65f3fa44850b04, type: 3}
-    obligatory: 0
-    isFinalRoom: 1
   - room: {fileID: 7521750919931777334, guid: 1c92eb8c230db394c948d78feb223557, type: 3}
     obligatory: 0
     isFinalRoom: 0
