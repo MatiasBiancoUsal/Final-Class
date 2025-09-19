@@ -69,6 +69,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     }
 
     Destroy(gameObject);
-    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    SceneManager.LoadScene(2);
     }
 }

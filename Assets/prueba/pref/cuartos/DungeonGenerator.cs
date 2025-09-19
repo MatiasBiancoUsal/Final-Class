@@ -22,7 +22,6 @@ public class DungeonGenerator : MonoBehaviour
     public int startPos = 0;
     public Rule[] rooms;
     public Vector2 offset;
-    private GameObject player; // el player se busca por Tag "Player"
 
     List<Cell> board;
 
@@ -131,9 +130,8 @@ public class DungeonGenerator : MonoBehaviour
 
     void GenerateDungeon()
     {
-        // Buscar al Player automáticamente por su Tag
-        if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player");
+        // Buscar siempre al Player automáticamente por su Tag
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         if (player == null)
         {
@@ -262,7 +260,7 @@ public class DungeonGenerator : MonoBehaviour
             if (lastRoom != null) lastRoom.EnableHatch();
         }
 
-        // 4. Mover jugador al punto PlayerSpawn del primer cuarto
+        // 4. Mover SIEMPRE al Player al punto PlayerSpawn del primer cuarto
         if (firstRoom != null && player != null)
         {
             Transform spawnPoint = firstRoom.transform.Find("PlayerSpawn");

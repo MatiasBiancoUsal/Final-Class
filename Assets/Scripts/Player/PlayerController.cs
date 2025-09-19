@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
     private CharacterController _cc;
     private float _pitch;
 
+
+    public DungeonGenerator dungeonGenerator; // arrastrar en el inspector
+    public GameObject player; // arrastrar el player aquí
+
     private void Awake()
     {
         _cc = GetComponent<CharacterController>();
@@ -55,4 +59,6 @@ public class PlayerController : MonoBehaviour
         Vector3 world = transform.TransformDirection(input);
         _cc.SimpleMove(world * moveSpeed);
     }
+
+
 }

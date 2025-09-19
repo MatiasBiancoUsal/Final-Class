@@ -22,7 +22,7 @@ public class Exit : MonoBehaviour
         if (player.gameObject.tag == "Player" && roomManager.GetComponent<RoomManager>().cuartoCompletado)
         {
 
-            SceneManager.LoadScene(currentSceneIndex ++);
+            SceneManager.LoadScene(currentSceneIndex + 1);
 
 
 
