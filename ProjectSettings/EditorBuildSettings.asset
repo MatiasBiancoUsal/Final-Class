@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/prueba/prueba 1.unity
     guid: 7de1b7fba496bc1478dba977b8f333c9
   - enabled: 1
+    path: Assets/prueba/NIvel 2.unity
+    guid: ef4c3959241dbc74887d6513bab31305
+  - enabled: 1
+    path: Assets/prueba/Nivel 3.unity
+    guid: 60745b0fef71f844398afd0c28548d57
+  - enabled: 1
     path: Assets/Scenes/Prueba NPC.unity
     guid: 1affe18af7af950408a9c609386a321e
   m_configObjects: {}
