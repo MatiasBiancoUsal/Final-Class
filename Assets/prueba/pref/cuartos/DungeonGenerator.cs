@@ -25,9 +25,14 @@ public class DungeonGenerator : MonoBehaviour
 
     List<Cell> board;
 
+    // guardamos el primer cuarto generado
+    private RoomBehaviour firstRoom;
+
     void Start()
     {
         MazeGenerator();
+        // Esperar un frame y luego mover al Player al spawn del primer cuarto
+        StartCoroutine(MovePlayerNextFrame());
     }
 
     void MazeGenerator()
@@ -130,14 +135,7 @@ public class DungeonGenerator : MonoBehaviour
 
     void GenerateDungeon()
     {
-        // Buscar siempre al Player automáticamente por su Tag
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-        if (player == null)
-        {
-            Debug.LogError("No se encontró ningún objeto con el tag 'Player' en la escena.");
-            return;
-        }
+        firstRoom = null; // reiniciamos
 
         List<Vector2Int> visitedCells = new List<Vector2Int>();
         for (int i = 0; i < size.x; i++)
@@ -171,7 +169,6 @@ public class DungeonGenerator : MonoBehaviour
 
         int cellIndex = 0;
         HashSet<GameObject> usedRooms = new HashSet<GameObject>();
-        RoomBehaviour firstRoom = null;
         RoomBehaviour lastRoom = null;
 
         // 1. Colocar cuartos obligatorios
@@ -259,19 +256,21 @@ public class DungeonGenerator : MonoBehaviour
             Debug.LogWarning("No se definió un cuarto final. Se usará el último generado.");
             if (lastRoom != null) lastRoom.EnableHatch();
         }
+    }
 
-        // 4. Mover SIEMPRE al Player al punto PlayerSpawn del primer cuarto
-        if (firstRoom != null && player != null)
+    IEnumerator MovePlayerNextFrame()
+    {
+        // esperar hasta el final del frame actual, cuando todo esté instanciado
+        yield return null;
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null && firstRoom != null)
         {
             Transform spawnPoint = firstRoom.transform.Find("PlayerSpawn");
             if (spawnPoint != null)
-            {
                 player.transform.position = spawnPoint.position;
-            }
             else
-            {
                 player.transform.position = firstRoom.transform.position + new Vector3(0, 1, 0);
-            }
         }
     }
 }
