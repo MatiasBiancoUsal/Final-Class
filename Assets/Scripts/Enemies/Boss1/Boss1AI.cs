@@ -69,37 +69,48 @@ public class Boss1AI : MonoBehaviour
     bool _inEndlag;
     float _endlagEndTime;
 
-    // boludeces de max
-    private bool enemyActive = false;
-    Vector3 startpos; 
+    // --- parte de max ---
+    // flag que indica si el boss ya "vio" al jugador (line of sight + dentro de detectionRange)
+    bool _hasSeenPlayer = false;
 
     void Awake()
     {
-        //Max toco esto
-        startpos = this.transform.position;
-
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponentInChildren<Animator>();
         var go = GameObject.FindWithTag(playerTag);
         if (go != null) _player = go.transform;
 
-        _nextSummonTime = Time.time + firstSummonDelay;
+        // --- parte de max ---
+        // No ponemos aquí el siguiente summon; lo inicializamos cuando el boss vea al jugador.
+        _nextSummonTime = float.MaxValue;
     }
 
     void Update()
     {
-        //Max toco esto
-        if (startpos != this.transform.position)
-        {
-            enemyActive = true;
-        }
-
         if (_player == null) return;
 
-        // -------- INVOCACIÓN (no depende de animación, puede ocurrir aunque esté atacando) --------
-        if (Time.time >= _nextSummonTime && enemyActive)
+        // calculos tempranos para usar en lógica y para decidir si "ve" al jugador
+        float dist = Vector3.Distance(transform.position, _player.position);
+        bool hasLOS = !Physics.Linecast(
+                            transform.position + Vector3.up * 1.2f,
+                            _player.position + Vector3.up * 1.2f,
+                            obstacleMask);
+
+        // --- parte de max ---
+        // cuando el boss ve al jugador (line of sight + dentro de detectionRange),
+        // activamos la lógica de spawns: empezamos el timer del primer spawn desde ahora.
+        if (!_hasSeenPlayer && hasLOS && dist <= detectionRange)
         {
-            Debug.Log("summon");
+            _hasSeenPlayer = true;
+            _nextSummonTime = Time.time + firstSummonDelay;
+            
+        }
+
+        // -------- INVOCACIÓN --------
+        // solo invocamos si el boss ya vio al jugador
+        if (Time.time >= _nextSummonTime && _hasSeenPlayer)
+        {
+           
             SummonMinions();
             _nextSummonTime = Time.time + summonCooldown;
         }
@@ -115,12 +126,7 @@ public class Boss1AI : MonoBehaviour
             else return;
         }
 
-        float dist = Vector3.Distance(transform.position, _player.position);
         bool canMelee = Time.time >= _nextMeleeTime;
-        bool hasLOS = !Physics.Linecast(
-                            transform.position + Vector3.up * 1.2f,
-                            _player.position + Vector3.up * 1.2f,
-                            obstacleMask);
 
         // 3) Si estás dentro de rango melee y pasó cooldown y tienes visión:
         if (dist <= meleeRange && canMelee && hasLOS)
