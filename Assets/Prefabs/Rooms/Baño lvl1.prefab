@@ -699,7 +699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1571706547325861765, guid: 1375c3835f7581c459c007465ad0f63c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.63
+      value: -11.83
       objectReference: {fileID: 0}
     - target: {fileID: 1571706547325861765, guid: 1375c3835f7581c459c007465ad0f63c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2368,6 +2368,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8329348479573744367}
     m_Modifications:
+    - target: {fileID: 3479643036142062138, guid: ae8447dc282d8994ebf069e0774a647f, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4778846697287028982, guid: ae8447dc282d8994ebf069e0774a647f, type: 3}
       propertyPath: m_Name
       value: "Ba\xF1o puerta abierta"
