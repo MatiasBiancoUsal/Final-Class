@@ -38,6 +38,41 @@ public class Boss2AI : MonoBehaviour
     [Tooltip("Velocidad de giro al seguir al jugador")]
     public float rotationSpeed = 5f;
 
+    // ------------------ Invocación de Puños ------------------
+    [Header("Puños invocados")]
+    [Tooltip("Prefabs posibles del puño (elige uno aleatorio por invocación)")]
+    public GameObject[] fistPrefabs;
+    [Tooltip("Cada cuántos segundos invocar (default 5s)")]
+    public float fistsInterval = 5f;
+    [Tooltip("Cantidad de puños por oleada")]
+    public int fistsPerWave = 1;
+    [Tooltip("Radio del área alrededor del boss donde caen los puños")]
+    public float fistAreaRadius = 8f;
+    [Tooltip("Capa de suelo para raycast")]
+    public LayerMask groundMask;
+    [Tooltip("Altura extra sobre el piso al instanciar (pre-ataque visual)")]
+    public float fistSpawnYOffset = 0.15f;
+
+    [Header("Comportamiento del puño")]
+    [Tooltip("Demora antes de subir (tiempo de aviso)")]
+    public float fistPreDelay = 0.75f;
+    [Tooltip("Altura que sube el puño")]
+    public float fistRiseHeight = 3f;
+    [Tooltip("Tiempo que tarda en subir")]
+    public float fistRiseDuration = 0.25f;
+    [Tooltip("Tiempo que permanece tras el golpe antes de destruirse")]
+    public float fistLingerAfter = 0.2f;
+    [Tooltip("Daño al jugador cuando golpea")]
+    public int fistDamage = 30;
+    [Tooltip("Radio del golpe al subir")]
+    public float fistHitRadius = 1.5f;
+    [Tooltip("Máscara del jugador para el golpe del puño")]
+    public LayerMask fistPlayerMask;
+
+    private float _nextFistsTime;
+
+    // ---------------------------------------------------------
+
     NavMeshAgent _agent;
     Animator _animator;
     Transform _player;
@@ -53,17 +88,24 @@ public class Boss2AI : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
         var go = GameObject.FindWithTag(playerTag);
         if (go != null) _player = go.transform;
-        else Debug.LogError($"ManuscriptorAI: no se encontró ningún GameObject con tag '{playerTag}'");
+
+        _nextFistsTime = Time.time + fistsInterval;
     }
 
     void Update()
     {
         if (_player == null) return;
 
-        // 1) Si ejecutando melee, nada interrumpe hasta OnMeleeAttackEnd
+        // ----------- Invocación de puños por intervalo -----------
+        if (Time.time >= _nextFistsTime)
+        {
+            SummonFists();
+            _nextFistsTime = Time.time + fistsInterval;
+        }
+
+        // ------------------- Lógica de melee/movimiento -------------------
         if (_isMeleeAttacking) return;
 
-        // 2) Si en endlag, bloquea todo motion/rotación hasta que acabe
         if (_inEndlag)
         {
             if (Time.time >= _endlagEndTime) _inEndlag = false;
@@ -77,21 +119,18 @@ public class Boss2AI : MonoBehaviour
                             _player.position + Vector3.up * 1.2f,
                             obstacleMask);
 
-        // 3) Si estás dentro de rango melee y pasó cooldown y tienes visión:
         if (dist <= meleeRange && canMelee && hasLOS)
         {
             StartMeleeAttack();
             return;
         }
 
-        // 4) Si estás dentro de detectionRange, persigue
         if (dist <= detectionRange)
         {
             Chase();
             return;
         }
 
-        // 5) Fuera de detectionRange → idle
         Idle();
     }
 
@@ -148,16 +187,58 @@ public class Boss2AI : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, tgt, rotationSpeed * Time.deltaTime);
     }
 
+    // ----------------- Invocación de puños -----------------
+
+    private void SummonFists()
+    {
+        if (fistPrefabs == null || fistPrefabs.Length == 0 || fistsPerWave <= 0)
+            return;
+
+        for (int i = 0; i < fistsPerWave; i++)
+        {
+            // Punto aleatorio dentro de un círculo en XZ
+            Vector2 rnd = Random.insideUnitCircle * fistAreaRadius;
+            Vector3 desired = transform.position + new Vector3(rnd.x, 10f, rnd.y); // 10 unidades arriba para raycast
+
+            // Raycast DOWN al suelo
+            if (Physics.Raycast(desired, Vector3.down, out RaycastHit hit, 50f, groundMask, QueryTriggerInteraction.Ignore))
+            {
+                Vector3 spawnPos = hit.point + Vector3.up * fistSpawnYOffset;
+                GameObject prefab = fistPrefabs[Random.Range(0, fistPrefabs.Length)];
+                var obj = Instantiate(prefab, spawnPos, Quaternion.identity);
+
+                // Si el prefab tiene FistTrap, configuramos sus parámetros
+                if (obj.TryGetComponent<FistTrap>(out var trap))
+                {
+                    trap.preAttackDelay = fistPreDelay;
+                    trap.riseHeight = fistRiseHeight;
+                    trap.riseDuration = fistRiseDuration;
+                    trap.lingerAfter = fistLingerAfter;
+                    trap.damage = fistDamage;
+                    trap.hitRadius = fistHitRadius;
+                    trap.playerMask = fistPlayerMask;
+                }
+            }
+        }
+    }
+
+    // --------------------- Gizmos ---------------------
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
+
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, meleeRange);
+
         if (meleeHitPoint)
         {
             Gizmos.color = Color.magenta;
             Gizmos.DrawWireSphere(meleeHitPoint.position + meleeHitOffset, meleeHitRadius);
         }
+
+        // Área de invocación de puños
+        Gizmos.color = new Color(1f, 0.5f, 0f, 0.6f);
+        Gizmos.DrawWireSphere(transform.position, fistAreaRadius);
     }
 }
