@@ -2110,8 +2110,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 852643316}
-        m_TargetAssemblyTypeName: LoadPruebaCuartos, Assembly-CSharp
-        m_MethodName: GoToPruebaCuartos
+        m_TargetAssemblyTypeName: LoadNivel1s, Assembly-CSharp
+        m_MethodName: Nivel1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
