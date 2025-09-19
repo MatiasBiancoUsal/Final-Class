@@ -440,7 +440,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3367862589287666160, guid: 17ebac4a6ae02db4185b7726e565bcfe, type: 3}
       propertyPath: cooldown
-      value: 0.7
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5789977296162441021, guid: 17ebac4a6ae02db4185b7726e565bcfe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1342,7 +1342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c1bfdb39acff74abe0552362f515da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 4, y: 4}
+  size: {x: 3, y: 3}
   startPos: 0
   rooms:
   - room: {fileID: 7521750919931777334, guid: bfe23b23dcf946247bc2443352e6a78b, type: 3}
