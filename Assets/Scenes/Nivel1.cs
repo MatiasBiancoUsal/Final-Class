@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadPruebaCuartos : MonoBehaviour
+public class LoadNivel1s : MonoBehaviour
 {
-    public void GoToPruebaCuartos()
+    public void Nivel1()
     {
-        SceneManager.LoadScene("pruebaCuartos");
+        SceneManager.LoadScene("Nivel 1");
     }
 }
