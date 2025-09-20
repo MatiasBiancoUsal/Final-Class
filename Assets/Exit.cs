@@ -7,6 +7,7 @@ public class Exit : MonoBehaviour
 {
 
     int currentSceneIndex;
+    public bool LastLevelBool = false;
     public GameObject roomManager;
     GameObject player;
 
@@ -21,11 +22,14 @@ public class Exit : MonoBehaviour
 
         if (player.gameObject.tag == "Player" && roomManager.GetComponent<RoomManager>().cuartoCompletado)
         {
-
-            SceneManager.LoadScene(currentSceneIndex + 1);
-
-
-
+            if (LastLevelBool == true)
+            {
+                SceneManager.LoadScene(0);
+            }
+            else
+            {
+                SceneManager.LoadScene(currentSceneIndex + 1);
+            }
         }
     }
 }

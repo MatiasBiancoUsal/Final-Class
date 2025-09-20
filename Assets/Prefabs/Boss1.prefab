@@ -109,7 +109,7 @@ MonoBehaviour:
     m_Bits: 256
   meleeRange: 4
   meleeCooldown: 1.5
-  meleeEndlag: 3
+  meleeEndlag: 1
   meleeTrigger: Attack
   meleeHitPoint: {fileID: 1108493319514510270}
   meleeHitOffset: {x: 0, y: -0.9, z: 0}
