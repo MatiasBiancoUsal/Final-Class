@@ -777,6 +777,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7409749939518923287, guid: e61211e8c38085049af02f47324f6884, type: 3}
   m_PrefabInstance: {fileID: 1528258557}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1528258560 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 994025729751595534, guid: e61211e8c38085049af02f47324f6884, type: 3}
+  m_PrefabInstance: {fileID: 1528258557}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1573166609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,6 +1142,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6728851636528843937, guid: 17ebac4a6ae02db4185b7726e565bcfe, type: 3}
+      propertyPath: healthBarFill
+      value: 
+      objectReference: {fileID: 1528258560}
     - target: {fileID: 8209883770031911484, guid: 17ebac4a6ae02db4185b7726e565bcfe, type: 3}
       propertyPath: m_Name
       value: player
