@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Unity.Services.Analytics;
 
 public class DropSlot : MonoBehaviour, IDropHandler
 {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Unity.Services.Analytics;
 
 [RequireComponent(typeof(Collider))]
 public class Enemy1Health : MonoBehaviour, IDamageable

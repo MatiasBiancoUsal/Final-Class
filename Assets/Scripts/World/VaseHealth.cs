@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Services.Analytics;
 
 /// Vida simple: un golpe basta para romper el jarrón.
 [RequireComponent(typeof(Collider))]

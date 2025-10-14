@@ -1,4 +1,5 @@
 using UnityEngine;
+using Unity.Services.Analytics;
 
 [AddComponentMenu("UI/HUD Player")]
 [DisallowMultipleComponent]

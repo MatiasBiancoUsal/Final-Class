@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Unity.Services.Analytics;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class PencilbeeAI : MonoBehaviour

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Unity.Services.Analytics;
 
 /// <summary>Power-up: acelera la cadencia por un tiempo (Descarga Insaciable).</summary>
 public class FireRateBoostPickup : MonoBehaviour

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Services.Analytics;
 
 /// <summary>Gestiona municiones y arma equipada del jugador.</summary>
 public class PlayerInventory : MonoBehaviour

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Unity.Services.Analytics;
 
 /// <summary>
 /// Centraliza y aplica modificadores temporales de power-ups al jugador.

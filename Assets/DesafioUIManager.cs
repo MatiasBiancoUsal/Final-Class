@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Services.Analytics;
 
 public class DesafioUIManager : MonoBehaviour
 {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Services.Analytics;
 
 /// <summary>Arma básica de ejemplo: golpe cuerpo a cuerpo.</summary>
 public class FirstWeapon : WeaponBase

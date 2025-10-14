@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using Unity.Services.Analytics;
 
 /// <summary>HUD que muestra las balas del arma equipada.</summary>
 public class AmmoHUD : MonoBehaviour

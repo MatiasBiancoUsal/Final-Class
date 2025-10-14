@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Unity.Services.Analytics;
 
 public class ScriptPausa : MonoBehaviour
 {

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Unity.Services.Analytics;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]

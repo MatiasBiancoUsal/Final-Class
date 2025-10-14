@@ -1,4 +1,5 @@
 using UnityEngine;
+using Unity.Services.Analytics;
 
 /// <summary>
 /// Gestiona equipar armas y unifica la entrada de disparo (solo CLICK IZQUIERDO).

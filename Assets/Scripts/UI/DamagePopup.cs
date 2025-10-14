@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Unity.Services.Analytics;
 
 /// <summary>
 /// Popup flotante que muestra el daño infligido. Se instancia con

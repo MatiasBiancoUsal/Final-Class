@@ -1,4 +1,5 @@
 using UnityEngine;
+using Unity.Services.Analytics;
 
 /// <summary>Base de todas las armas. Controla cooldown, animación y munición.</summary>
 public abstract class WeaponBase : MonoBehaviour

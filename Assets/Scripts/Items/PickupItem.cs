@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Unity.Services.Analytics;
 
 [RequireComponent(typeof(Collider))]
 public class PickupItem : MonoBehaviour

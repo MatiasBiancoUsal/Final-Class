@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Unity.Services.Analytics;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class DraggableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
