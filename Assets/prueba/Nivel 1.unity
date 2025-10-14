@@ -1480,6 +1480,9 @@ MonoBehaviour:
   - room: {fileID: 7521750919931777334, guid: 5e77a363c0e8bf541a3cadf677196b9f, type: 3}
     obligatory: 0
     isFinalRoom: 0
+  - room: {fileID: 7521750919931777334, guid: 9d0d8a776be737c4d98bfd976fcf80a9, type: 3}
+    obligatory: 0
+    isFinalRoom: 0
   - room: {fileID: 7521750919931777334, guid: 3dd452a266827d142a360555d22a094b, type: 3}
     obligatory: 0
     isFinalRoom: 0
