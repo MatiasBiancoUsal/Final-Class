@@ -1289,11 +1289,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c1bfdb39acff74abe0552362f515da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 2, y: 2}
+  size: {x: 3, y: 3}
   startPos: 0
   rooms:
-  - room: {fileID: 7521750919931777334, guid: 88b0119190458c64fb71057ce5e217ff, type: 3}
-    obligatory: 1
+  - room: {fileID: 7521750919931777334, guid: e44d5d2bee3169c40a6e3a75a6921d3f, type: 3}
+    obligatory: 0
     isFinalRoom: 0
   - room: {fileID: 7521750919931777334, guid: 1161c401ff757be4cb12880d50d4d413, type: 3}
     obligatory: 0
@@ -1308,6 +1308,9 @@ MonoBehaviour:
     obligatory: 0
     isFinalRoom: 0
   - room: {fileID: 7521750919931777334, guid: d2058c0aa02c1bb4fb286dca7bd22847, type: 3}
+    obligatory: 0
+    isFinalRoom: 1
+  - room: {fileID: 7521750919931777334, guid: b98c1cf3a4f53be4ea2caad36eade5a6, type: 3}
     obligatory: 0
     isFinalRoom: 1
   offset: {x: 90, y: 90}

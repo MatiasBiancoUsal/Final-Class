@@ -501,7 +501,7 @@ MonoBehaviour:
   size: {x: 3, y: 3}
   startPos: 0
   rooms:
-  - room: {fileID: 7521750919931777334, guid: 5e786e3b4efa71c47b5bffd5ae9d1cb1, type: 3}
+  - room: {fileID: 7521750919931777334, guid: 9c453c0e7eaa92944ab58a851b3b41de, type: 3}
     obligatory: 1
     isFinalRoom: 0
   - room: {fileID: 7521750919931777334, guid: 55b6ee1b6b54cbc4d809b44d31c6c00d, type: 3}
@@ -517,6 +517,9 @@ MonoBehaviour:
     obligatory: 0
     isFinalRoom: 0
   - room: {fileID: 7521750919931777334, guid: 36293241a662f834ba721dc5fe6a9ecd, type: 3}
+    obligatory: 0
+    isFinalRoom: 1
+  - room: {fileID: 7521750919931777334, guid: 1f15869bbbd24244e8dce02c3198e022, type: 3}
     obligatory: 0
     isFinalRoom: 1
   offset: {x: 90, y: 90}
