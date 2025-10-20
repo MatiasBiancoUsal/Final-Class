@@ -48,7 +48,20 @@ public static class EventSender
         Debug.Log("Event sent: LevelQuit");
     }
 
+    public static void SendLevelStart(int value, string name)
+    {
+        var parameters = new Dictionary<string, object>
+        {
+            { "LevelStart", value },
+            { "LevelStartName", name },
 
+        };
+
+        AnalyticsService.Instance.CustomData("LevelStart", parameters);
+        AnalyticsService.Instance.CustomData("LevelStartName", parameters);
+        AnalyticsService.Instance.Flush();
+        Debug.Log("Event sent: levelStart");
+    }
 
 
 }

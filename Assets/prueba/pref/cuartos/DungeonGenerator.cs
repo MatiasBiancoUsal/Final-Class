@@ -1,9 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DungeonGenerator : MonoBehaviour
 {
+
+    private void Awake()
+    {
+        //Analytics
+        EventSender.SendLevelStart(SceneManager.GetActiveScene().buildIndex, SceneManager.GetActiveScene().name);
+    }
+
     public class Cell
     {
         public bool visited = false;
