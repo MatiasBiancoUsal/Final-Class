@@ -69,7 +69,16 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         return; 
     }
 
-   // Destroy(gameObject);
-    SceneManager.LoadScene(2);
+        //Analytics
+        int sceneID = SceneManager.GetActiveScene().buildIndex; 
+        EventSender.SendDeathPlayer(sceneID);
+
+        // re chequear esto psd Maximo
+        // Destroy(gameObject);      
+        SceneManager.LoadScene(2);
+    
+   
+    
     }
+    
 }
