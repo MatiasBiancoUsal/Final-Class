@@ -60,6 +60,10 @@ public class ScriptPausa : MonoBehaviour
 
     public void VolverInicio()
     {
+        //Anal..ytic
+        EventSender.SendLevelQuit(SceneManager.GetActiveScene().buildIndex, SceneManager.GetActiveScene().name);
+
+
         Time.timeScale = 1f; // safety
         if (Jugador) Destroy(Jugador);
         SceneManager.LoadScene("Prueba Menú");

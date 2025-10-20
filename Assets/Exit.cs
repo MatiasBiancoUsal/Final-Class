@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Services.Analytics;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Unity.Services.Analytics;
 
 public class Exit : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class Exit : MonoBehaviour
 
         if (player.gameObject.tag == "Player" && roomManager.GetComponent<RoomManager>().cuartoCompletado)
         {
+            //Anal... ytic
+            EventSender.SendFinish(SceneManager.GetActiveScene().buildIndex, SceneManager.GetActiveScene().name);
+
             if (LastLevelBool == true)
             {
                 SceneManager.LoadScene(0);
