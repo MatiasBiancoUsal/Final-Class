@@ -58,7 +58,7 @@ public class Enemy1Health : MonoBehaviour, IDamageable
         _isDead = true;
 
         //Analytic
-        EventSender.SendEnemiesKilled(gameObject.name);
+        EventSender.SendEnemiesKilled(1, gameObject.name);
 
         // Desactiva NavMesh y colisiones
         if (_agent) _agent.isStopped = true;

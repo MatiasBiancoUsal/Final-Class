@@ -53,7 +53,7 @@ public class Boss1Health : MonoBehaviour, IDamageable
         _isDead = true;
 
         //Analytic
-        EventSender.SendEnemiesKilled(gameObject.name);
+        EventSender.SendEnemiesKilled(1, gameObject.name);
 
         // Para la IA y las colisiones
         if (agent != null) agent.isStopped = true;

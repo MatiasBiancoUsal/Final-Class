@@ -68,7 +68,7 @@ public class LanceroHealth : MonoBehaviour, IDamageable
         _isDead = true;
 
         //Analytic
-        EventSender.SendEnemiesKilled(gameObject.name);
+        EventSender.SendEnemiesKilled(1, gameObject.name);
 
         if (ai != null) ai.enabled = false;
         var agent = GetComponentInParent<NavMeshAgent>();
