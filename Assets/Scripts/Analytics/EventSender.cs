@@ -63,5 +63,22 @@ public static class EventSender
         Debug.Log("Event sent: levelStart");
     }
 
+    public static void SendEnemiesKilled(string name)
+    {
+        name = name.Length >= 7 ? name.Substring(0, 7) : name;
+
+        var parameters = new Dictionary<string, object>
+        {
+            
+            { "EnemiesKilledName", name },
+
+        };
+
+        
+        AnalyticsService.Instance.CustomData("EnemiesKilledName", parameters);
+        AnalyticsService.Instance.Flush();
+        Debug.Log("Event sent: EnemiesKilledName");
+    }
+
 
 }

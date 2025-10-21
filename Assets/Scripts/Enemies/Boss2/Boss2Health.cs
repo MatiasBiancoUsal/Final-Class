@@ -52,6 +52,10 @@ public class Boss2Health : MonoBehaviour, IDamageable
     {
         _isDead = true;
 
+        //Analytic
+        EventSender.SendEnemiesKilled(gameObject.name);
+
+
         // Para la IA y las colisiones
         if (agent != null) agent.isStopped = true;
         if (ai != null) ai.enabled = false;

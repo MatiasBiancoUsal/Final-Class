@@ -54,6 +54,9 @@ public class PencilbeeHealth : MonoBehaviour, IDamageable
     {
         _isDead = true;
 
+        //Analytic
+        EventSender.SendEnemiesKilled(gameObject.name);
+
         if (agent != null) agent.isStopped = true;
         if (ai != null) ai.enabled = false;
 
@@ -67,6 +70,7 @@ public class PencilbeeHealth : MonoBehaviour, IDamageable
 
         if (roomManager != null)
             roomManager.GetComponent<RoomManager>().numeroDeEnemigos--;
+
     }
 
     // llamado desde el último frame de la animación de muerte
