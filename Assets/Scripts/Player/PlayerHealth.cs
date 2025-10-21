@@ -74,11 +74,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         EventSender.SendDeathPlayer(sceneID);
 
         // re chequear esto psd Maximo
-        // Destroy(gameObject);      
+            
         SceneManager.LoadScene(2);
-    
-   
-    
+        Destroy(gameObject);
+       
+
     }
     
 }
