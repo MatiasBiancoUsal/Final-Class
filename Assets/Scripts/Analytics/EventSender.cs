@@ -28,7 +28,7 @@ public static class EventSender
         };
 
         AnalyticsService.Instance.CustomData("Finish", parameters);
-        AnalyticsService.Instance.CustomData("FinishLvlName", parameters);
+       
         AnalyticsService.Instance.Flush();
         Debug.Log("Event sent: Finish");
     }
@@ -43,7 +43,7 @@ public static class EventSender
         };
 
         AnalyticsService.Instance.CustomData("LevelQuit", parameters);
-        AnalyticsService.Instance.CustomData("LevelQuitName", parameters);
+        
         AnalyticsService.Instance.Flush();
         Debug.Log("Event sent: LevelQuit");
     }
@@ -58,7 +58,7 @@ public static class EventSender
         };
 
         AnalyticsService.Instance.CustomData("LevelStart", parameters);
-        AnalyticsService.Instance.CustomData("LevelStartName", parameters);
+        
         AnalyticsService.Instance.Flush();
         Debug.Log("Event sent: levelStart");
     }
