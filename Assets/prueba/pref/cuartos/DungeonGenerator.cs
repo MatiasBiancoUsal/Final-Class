@@ -6,11 +6,7 @@ using UnityEngine.SceneManagement;
 public class DungeonGenerator : MonoBehaviour
 {
 
-    private void Awake()
-    {
-        //Analytics
-        EventSender.SendLevelStart(SceneManager.GetActiveScene().buildIndex, SceneManager.GetActiveScene().name);
-    }
+    
 
     public class Cell
     {
@@ -41,6 +37,8 @@ public class DungeonGenerator : MonoBehaviour
         MazeGenerator();
         // Esperar un frame y luego mover al Player al spawn del primer cuarto
         StartCoroutine(MovePlayerNextFrame());
+        //Analytics
+        EventSender.SendLevelStart(SceneManager.GetActiveScene().buildIndex, SceneManager.GetActiveScene().name);
     }
 
     void MazeGenerator()
