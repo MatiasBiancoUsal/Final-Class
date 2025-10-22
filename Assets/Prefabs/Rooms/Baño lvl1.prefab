@@ -1466,6 +1466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfe6ef75b2398e41a1ea2d05f828aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LastLevelBool: 0
   roomManager: {fileID: 5652822652875218769}
 --- !u!1001 &4039588192073849427
 PrefabInstance:
