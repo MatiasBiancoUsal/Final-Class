@@ -261,7 +261,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 09b8b2b6c25c7c94fba2917092e89fcb, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 5b951d76cec0f6f41b79c179f6c6071e, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &5652822652875218769
 GameObject:
@@ -1307,6 +1307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfe6ef75b2398e41a1ea2d05f828aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LastLevelBool: 0
   roomManager: {fileID: 5652822652875218769}
 --- !u!1001 &3561178832756142133
 PrefabInstance:
