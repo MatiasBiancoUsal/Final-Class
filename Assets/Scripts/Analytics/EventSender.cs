@@ -80,5 +80,18 @@ public static class EventSender
         Debug.Log("Event sent: EnemiesKilledName");
     }
 
+    public static void SendEnemyThatKilledPlayer(string name)
+    {
+
+        var parameters = new Dictionary<string, object>
+        {
+            {"EnemyThatKilledPlayer", name }
+        };
+
+        AnalyticsService.Instance.CustomData("EnemyThatKilledPlayer", parameters);
+        AnalyticsService.Instance.Flush();
+        Debug.Log("Event sent: EnemyThatKilledPlayer");
+    }
+
 
 }
