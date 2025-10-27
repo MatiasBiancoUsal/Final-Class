@@ -69,6 +69,19 @@ public class FistTrap : MonoBehaviour
         for (int i = 0; i < hits.Length; i++)
         {
             hits[i].GetComponentInParent<IDamageable>()?.TakeDamage(damage);
+            
+               
+
+
+                //Analytics = para saber quien fue el ultimo enemigo que golpeo al jugador.
+                PlayerData playerData = hits[i].GetComponentInParent<PlayerData>();
+                if (playerData != null)
+                {
+                    playerData.enemyLastHit = "Boss2";
+
+
+                }
+            
         }
     }
 

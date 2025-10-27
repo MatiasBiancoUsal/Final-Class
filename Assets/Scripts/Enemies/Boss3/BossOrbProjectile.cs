@@ -95,6 +95,18 @@ public class BossOrbProjectile : MonoBehaviour
         if (isPlayer)
         {
             other.GetComponentInParent<IDamageable>()?.TakeDamage(_damage);
+            
+
+
+                //Analytics = para saber quien fue el ultimo enemigo que golpeo al jugador.
+                PlayerData playerData = other.GetComponentInParent<PlayerData>();
+                if (playerData != null)
+                {
+                    playerData.enemyLastHit = "Boss3";
+
+
+                }
+            
             Destroy(gameObject);
         }
     }

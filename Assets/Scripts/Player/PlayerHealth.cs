@@ -73,6 +73,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         int sceneID = SceneManager.GetActiveScene().buildIndex; 
         EventSender.SendDeathPlayer(sceneID);
 
+        EventSender.SendEnemyThatKilledPlayer(GetComponent<PlayerData>().enemyLastHit);
+
         // re chequear esto psd Maximo
             
         SceneManager.LoadScene(2);
