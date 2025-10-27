@@ -5343,6 +5343,7 @@ GameObject:
   - component: {fileID: 935573124365455736}
   - component: {fileID: 7742380527520649562}
   - component: {fileID: 8105030707394001498}
+  - component: {fileID: 7599757621668457935}
   m_Layer: 7
   m_Name: player
   m_TagString: Player
@@ -5487,6 +5488,8 @@ MonoBehaviour:
   mouseSensitivity: 2
   verticalLimit: 80
   cameraPivot: {fileID: 5252249806877567711}
+  dungeonGenerator: {fileID: 0}
+  player: {fileID: 0}
 --- !u!54 &6802336734157106712
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5611,6 +5614,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRateMultiplier: 1
   bouncyAmmoActive: 0
+--- !u!114 &7599757621668457935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8209883770031911484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb10195b237760429fb8d364c7d4a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3590399643110322010
 PrefabInstance:
   m_ObjectHideFlags: 0
