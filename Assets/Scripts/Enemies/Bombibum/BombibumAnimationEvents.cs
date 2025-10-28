@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BombibumAnimationEvents : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Tooltip("Referencia al BombibumHealth en el parent")]
+    public BombibumHealth health;
 
-    // Update is called once per frame
-    void Update()
+    public void OnDeathEnd()
     {
-        
+        if (health != null)
+            health.OnDeathAnimationEnd();
     }
 }
