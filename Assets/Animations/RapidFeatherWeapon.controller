@@ -31,7 +31,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FeatherWeapon
+  m_Name: RapidFeatherWeapon
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Shoot
@@ -148,7 +148,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 30c16f451859d404aad64ed506b8829f, type: 2}
+  m_Motion: {fileID: 7400000, guid: 08f6c23cf583dd5488bdde2e55a26021, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

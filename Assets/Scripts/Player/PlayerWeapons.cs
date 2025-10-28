@@ -9,6 +9,7 @@ public class PlayerWeapons : MonoBehaviour
     [Header("Armas (hijos)")]
     public GameObject firstWeaponGO;   // melee / cuchillo
     public GameObject featherGunGO;    // pistola de plumas
+    public GameObject rapidFeatherGunGO;   // NUEVO
 
     private PlayerInventory _inventory;
     private AmmoHUD _hud;
@@ -32,13 +33,19 @@ public class PlayerWeapons : MonoBehaviour
         // Cambios de arma opcionales
         if (Input.GetKeyDown(KeyCode.Alpha1)) Equip(WeaponType.FirstWeapon);
         if (Input.GetKeyDown(KeyCode.Alpha2)) Equip(WeaponType.FeatherGun);
+        if (Input.GetKeyDown(KeyCode.Alpha3)) Equip(WeaponType.RapidFeatherGun);
 
         // DISPARO: solo click izquierdo
         if (Input.GetMouseButtonDown(0))
         {
-            WeaponBase wb = _inventory.equipped == WeaponType.FirstWeapon
-                ? firstWeaponGO.GetComponent<WeaponBase>()
-                : featherGunGO.GetComponent<WeaponBase>();
+            WeaponBase wb = null;
+
+            if (_inventory.equipped == WeaponType.FirstWeapon && firstWeaponGO)
+                wb = firstWeaponGO.GetComponent<WeaponBase>();
+            else if (_inventory.equipped == WeaponType.FeatherGun && featherGunGO)
+                wb = featherGunGO.GetComponent<WeaponBase>();
+            else if (_inventory.equipped == WeaponType.RapidFeatherGun && rapidFeatherGunGO)
+                wb = rapidFeatherGunGO.GetComponent<WeaponBase>();
 
             wb?.TryShoot();
         }
@@ -47,17 +54,14 @@ public class PlayerWeapons : MonoBehaviour
     /// <summary>Cambia el arma equipada y actualiza HUD/visibilidad.</summary>
     public void Equip(WeaponType w)
     {
-        if (_inventory == null) return;
-
-        // No permitir equipar armas no desbloqueadas
-        if (!_inventory.IsUnlocked(w)) w = WeaponType.FirstWeapon;
+        if (!_inventory.IsUnlocked(w)) return;
 
         _inventory.equipped = w;
 
-        if (firstWeaponGO != null)  firstWeaponGO.SetActive(w == WeaponType.FirstWeapon);
-        if (featherGunGO != null)   featherGunGO.SetActive(w == WeaponType.FeatherGun);
+        if (firstWeaponGO) firstWeaponGO.SetActive(w == WeaponType.FirstWeapon);
+        if (featherGunGO) featherGunGO.SetActive(w == WeaponType.FeatherGun);
+        if (rapidFeatherGunGO) rapidFeatherGunGO.SetActive(w == WeaponType.RapidFeatherGun);
 
         _hud?.OnWeaponEquipped(w);
-        ammoHUD?.OnWeaponEquipped(w);
     }
 }
