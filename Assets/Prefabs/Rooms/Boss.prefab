@@ -1303,6 +1303,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5128276548473999387, guid: 3bfb69dd304ca6643a7d7c4b941750a4, type: 3}
+      propertyPath: fistPreDelay
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5128276548473999387, guid: 3bfb69dd304ca6643a7d7c4b941750a4, type: 3}
+      propertyPath: fistsPerWave
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5128276548473999387, guid: 3bfb69dd304ca6643a7d7c4b941750a4, type: 3}
+      propertyPath: fistsInterval
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6253462746562892662, guid: 3bfb69dd304ca6643a7d7c4b941750a4, type: 3}
       propertyPath: roomManager
       value: 
