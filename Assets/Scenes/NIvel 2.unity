@@ -1302,8 +1302,8 @@ MonoBehaviour:
     obligatory: 0
     isFinalRoom: 0
   - room: {fileID: 7521750919931777334, guid: d2058c0aa02c1bb4fb286dca7bd22847, type: 3}
-    obligatory: 0
-    isFinalRoom: 1
+    obligatory: 1
+    isFinalRoom: 0
   - room: {fileID: 7521750919931777334, guid: b98c1cf3a4f53be4ea2caad36eade5a6, type: 3}
     obligatory: 0
     isFinalRoom: 0
