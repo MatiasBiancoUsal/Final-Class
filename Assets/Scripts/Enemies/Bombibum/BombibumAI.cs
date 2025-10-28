@@ -150,7 +150,21 @@ public class BombibumAI : MonoBehaviour
         Vector3 center = transform.position + Vector3.up * 0.5f;
         Collider[] hits = Physics.OverlapSphere(center, explodeRadius, playerMask, QueryTriggerInteraction.Ignore);
         for (int i = 0; i < hits.Length; i++)
-            hits[i].GetComponentInParent<IDamageable>()?.TakeDamage(explodeDamage);
+        {
+            var dmg = hits[i].GetComponentInParent<IDamageable>();
+            if (dmg != null)
+            {
+                // ANALYTICS: guardar quién golpeó al jugador
+                var playerData = hits[i].GetComponentInParent<PlayerData>();
+                if (playerData != null)
+                {
+                    string n = gameObject.name;
+                    playerData.enemyLastHit = n.Length >= 7 ? n.Substring(0, 7) : n;
+                }
+
+                dmg.TakeDamage(explodeDamage);
+            }
+        }
 
         // Matar sin animación (no usa Death)
         _health?.ExplodeKill();
