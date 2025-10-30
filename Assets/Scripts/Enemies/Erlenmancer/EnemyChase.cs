@@ -167,7 +167,19 @@ public class EnemyChase : MonoBehaviour
             meleeHitRadius,
             playerMask);
         foreach (var h in hits)
+        {
             h.GetComponentInParent<IDamageable>()?.TakeDamage(meleeDamage);
+
+
+            //Analytics = para saber quien fue el ultimo enemigo que golpeo al jugador.
+            PlayerData playerData = h.GetComponentInParent<PlayerData>();
+            if (playerData != null)
+            {
+                playerData.enemyLastHit = gameObject.name.Length >= 7 ? gameObject.name.Substring(0, 7) : gameObject.name;
+
+
+            }
+        }
     }
 
     // Animation Event: spawn del proyectil en ranged

@@ -118,7 +118,19 @@ public class EnemyProjectile : MonoBehaviour
         // 4) Da�o AOE
         Collider[] hits = Physics.OverlapSphere(transform.position, aoeRadius, playerMask);
         foreach (var h in hits)
-            h.GetComponentInParent<PlayerHealth>()?.TakeDamage(damage);
+        {
+            h.GetComponentInParent<IDamageable>()?.TakeDamage(damage);
+
+
+            //Analytics = para saber quien fue el ultimo enemigo que golpeo al jugador.
+            PlayerData playerData = h.GetComponentInParent<PlayerData>();
+            if (playerData != null)
+            {
+                playerData.enemyLastHit = "ErlenmancerProyectil";
+
+
+            }
+        }
 
         // 5) Destruye r�pido (pero deja tiempo al VFX)
 

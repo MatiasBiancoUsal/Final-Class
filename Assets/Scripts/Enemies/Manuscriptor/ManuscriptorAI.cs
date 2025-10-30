@@ -113,7 +113,19 @@ public class ManuscriptorAI : MonoBehaviour
         Vector3 center = meleeHitPoint.position + meleeHitOffset;
         Collider[] hits = Physics.OverlapSphere(center, meleeHitRadius, playerMask);
         foreach (var h in hits)
+        {
             h.GetComponentInParent<IDamageable>()?.TakeDamage(meleeDamage);
+
+
+            //Analytics = para saber quien fue el ultimo enemigo que golpeo al jugador.
+            PlayerData playerData = h.GetComponentInParent<PlayerData>();
+            if (playerData != null)
+            {
+                playerData.enemyLastHit = gameObject.name.Length >= 7 ? gameObject.name.Substring(0, 7) : gameObject.name;
+
+
+            }
+        }
     }
 
     // Llamado desde Animation Event en el último frame del clip Attack

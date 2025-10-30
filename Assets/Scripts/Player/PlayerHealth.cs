@@ -13,11 +13,18 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private PlayerShield _playerShield;
 
+    // NUEVO: referencia opcional al flash UI
+    [Header("Feedback de daño")]
+    public DamageFlashUI damageFlash;
+
     void Awake()
     {
         _currentHealth = maxHealth;
         UpdateHealthUI();
         _playerShield = GetComponent<PlayerShield>();
+
+        // Autolink por si te olvidás de arrastrarlo en el Inspector
+        if (!damageFlash) damageFlash = FindFirstObjectByType<DamageFlashUI>();
     }
 
     public void TakeDamage(int amount)
@@ -25,30 +32,32 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         // Escudo: bloquea daño
         if (_playerShield != null && _playerShield.IsShieldActive())
         {
-            Debug.Log("¡Daño bloqueado por el ESCUDO desde PlayerHealth!");
             _playerShield.ConsumeShield();
             return;
         }
 
-        
+        int prev = _currentHealth;
         _currentHealth = Mathf.Max(_currentHealth - amount, 0);
         UpdateHealthUI();
 
-       
+        // NUEVO: parpadeo rojo (intensidad proporcional al daño relativo)
+        if (_currentHealth < prev && damageFlash != null)
+        {
+            float intensity = Mathf.Clamp01((float)amount / Mathf.Max(1, maxHealth));
+            damageFlash.Flash(intensity); // ←
+        }
+
         GetComponent<Regeneracion>()?.NotifyDamaged();
-        
 
         if (_currentHealth <= 0)
             Die();
     }
 
-    
     public void Heal(int amount)
     {
         _currentHealth = Mathf.Min(_currentHealth + amount, maxHealth);
         UpdateHealthUI();
     }
-    
 
     private void UpdateHealthUI()
     {
@@ -58,27 +67,28 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void Die()
     {
-    // Revivir con porcentaje configurable si está armado (M) y no usado
-    var revive = GetComponent<RevivirMitad>();
-    if (revive && revive.ConsumeIfArmed())
-    {
-        int hp = Mathf.Max(1, Mathf.RoundToInt(maxHealth * Mathf.Clamp01(revive.revivePercent)));
-        _currentHealth = hp;
-        UpdateHealthUI();
-        Debug.Log($"¡Reviviste con {hp}/{maxHealth} HP!");
-        return; 
-    }
+        // Revivir con porcentaje configurable si está armado (M) y no usado
+        var revive = GetComponent<RevivirMitad>();
+        if (revive && revive.ConsumeIfArmed())
+        {
+            int hp = Mathf.Max(1, Mathf.RoundToInt(maxHealth * Mathf.Clamp01(revive.revivePercent)));
+            _currentHealth = hp;
+            UpdateHealthUI();
+            Debug.Log($"¡Reviviste con {hp}/{maxHealth} HP!");
+            return;
+        }
 
         //Analytics
-        int sceneID = SceneManager.GetActiveScene().buildIndex; 
+        int sceneID = SceneManager.GetActiveScene().buildIndex;
         EventSender.SendDeathPlayer(sceneID);
 
+        EventSender.SendEnemyThatKilledPlayer(GetComponent<PlayerData>().enemyLastHit);
+
         // re chequear esto psd Maximo
-            
+
         SceneManager.LoadScene(2);
         Destroy(gameObject);
-       
+
 
     }
-    
 }

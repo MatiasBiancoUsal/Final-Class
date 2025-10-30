@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using Unity.Services.Analytics;
 
 /// <summary>HUD que muestra las balas del arma equipada.</summary>
 public class AmmoHUD : MonoBehaviour
@@ -30,10 +29,14 @@ public class AmmoHUD : MonoBehaviour
         if (_inv) _inv.OnAmmoChanged -= HandleAmmoChanged;
     }
 
+    // Mapea armas a su pool de munición (Rapid usa la de Feather)
+    private static WeaponType AmmoKey(WeaponType w) =>
+        (w == WeaponType.RapidFeatherGun) ? WeaponType.FeatherGun : w;
+
     private void HandleAmmoChanged(WeaponType w, int amount)
     {
-        if (_inv && w == _inv.equipped)
-            UpdateHUD(w, amount);
+        if (_inv && AmmoKey(w) == AmmoKey(_inv.equipped))
+            UpdateHUD(_inv.equipped, amount);
     }
 
     /// <summary>Llamado desde PlayerWeapons al equipar arma.</summary>
