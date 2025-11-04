@@ -6,9 +6,20 @@ using Unity.Services.Analytics;
 
 public class PantallaInicio : MonoBehaviour
 {
-    public GameObject inicio;         
-    public GameObject menuPrincipal; 
-    public GameObject seleccionPersonaje; 
+    public GameObject inicio;
+    public GameObject menuPrincipal;
+    public GameObject seleccionPersonaje;
+
+    private bool haIniciado = false; 
+
+    void Update()
+    {
+        if (!haIniciado && (Input.anyKeyDown || Input.GetMouseButtonDown(0)))
+        {
+            IrAlMenuPrincipal();
+            haIniciado = true;
+        }
+    }
 
     public void IrAlMenuPrincipal()
     {
