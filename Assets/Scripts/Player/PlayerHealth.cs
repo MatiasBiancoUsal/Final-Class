@@ -19,6 +19,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     void Awake()
     {
+        DontDestroyOnLoad(this);   
+
+
         _currentHealth = maxHealth;
         UpdateHealthUI();
         _playerShield = GetComponent<PlayerShield>();
@@ -86,7 +89,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
         // re chequear esto psd Maximo
 
-        SceneManager.LoadScene(2);
+        
         Destroy(gameObject);
 
 

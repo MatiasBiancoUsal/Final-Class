@@ -13,6 +13,7 @@ public class Exit : MonoBehaviour
     public GameObject roomManager;
     GameObject player;
 
+
     private void Start()
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;

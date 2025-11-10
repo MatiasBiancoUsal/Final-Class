@@ -4777,7 +4777,7 @@ PrefabInstance:
     - target: {fileID: 9217917606207578163, guid: 9c9a196c93abb5f42867d371c46114ab, type: 3}
       propertyPath: roomManager
       value: 
-      objectReference: {fileID: 3446525984897022935}
+      objectReference: {fileID: 5652822652875218769}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
