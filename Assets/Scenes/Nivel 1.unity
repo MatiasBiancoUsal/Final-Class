@@ -2048,6 +2048,9 @@ MonoBehaviour:
   size: {x: 3, y: 3}
   startPos: 0
   rooms:
+  - room: {fileID: 7521750919931777334, guid: 7f8190147ff042a4c840f14e48669a87, type: 3}
+    obligatory: 1
+    isFinalRoom: 0
   - room: {fileID: 7521750919931777334, guid: bfe23b23dcf946247bc2443352e6a78b, type: 3}
     obligatory: 0
     isFinalRoom: 0
