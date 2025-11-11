@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ItemDataTutorial
   m_EditorClassIdentifier: 
   type: 1
-  ammoGained: 15
+  ammoGained: 5
