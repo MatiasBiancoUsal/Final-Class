@@ -1177,6 +1177,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2225135675346457817, guid: c79e4e3d4f6b9cd4d90cccaf657dbd57, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: d44775de2c238a846afb596bc28bdb6f, type: 2}
+    - target: {fileID: 2225135675346457817, guid: c79e4e3d4f6b9cd4d90cccaf657dbd57, type: 3}
       propertyPath: ammoGained
       value: 5
       objectReference: {fileID: 0}
