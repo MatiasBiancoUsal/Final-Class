@@ -53,7 +53,8 @@ public class ScriptPausa : MonoBehaviour
 
     public void Reiniciar()
     {
-        Time.timeScale = 1f; // safety
+        Jugador = GameObject.FindWithTag("Player");
+       // Time.timeScale = 1f; // safety
         if (Jugador) Destroy(Jugador);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -63,9 +64,9 @@ public class ScriptPausa : MonoBehaviour
         //Anal..ytic
         EventSender.SendLevelQuit(SceneManager.GetActiveScene().buildIndex, SceneManager.GetActiveScene().name);
 
-
-        Time.timeScale = 1f; // safety
+        Jugador = GameObject.FindWithTag("Player");
+      //  Time.timeScale = 1f; // safety
         if (Jugador) Destroy(Jugador);
-        SceneManager.LoadScene("Prueba Menú");
+        SceneManager.LoadScene("Prueba Menu");
     }
 }

@@ -2051,7 +2051,7 @@ MonoBehaviour:
   - room: {fileID: 7521750919931777334, guid: 7f8190147ff042a4c840f14e48669a87, type: 3}
     obligatory: 1
     isFinalRoom: 0
-  - room: {fileID: 7521750919931777334, guid: bfe23b23dcf946247bc2443352e6a78b, type: 3}
+  - room: {fileID: 7521750919931777334, guid: 908a446531a2ca2458ca2c19a8c88c91, type: 3}
     obligatory: 0
     isFinalRoom: 0
   - room: {fileID: 7521750919931777334, guid: 5e77a363c0e8bf541a3cadf677196b9f, type: 3}
@@ -2069,9 +2069,6 @@ MonoBehaviour:
   - room: {fileID: 7521750919931777334, guid: 1c92eb8c230db394c948d78feb223557, type: 3}
     obligatory: 0
     isFinalRoom: 1
-  - room: {fileID: 7521750919931777334, guid: 908a446531a2ca2458ca2c19a8c88c91, type: 3}
-    obligatory: 0
-    isFinalRoom: 0
   offset: {x: 90, y: 90}
 --- !u!4 &2098870929
 Transform:
